@@ -28,14 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.ButtonPractice = new System.Windows.Forms.Button();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.ButtonDocument = new System.Windows.Forms.Button();
             this.ButtonLevel100 = new System.Windows.Forms.Button();
             this.ButtonLevel95 = new System.Windows.Forms.Button();
             this.ButtonLevel80 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-            this.MyInfoButton = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.mainMenu = new System.Windows.Forms.MenuStrip();
             this.开始NToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -45,9 +46,10 @@
             this.MainPanel = new System.Windows.Forms.Panel();
             this.BodyPanel = new System.Windows.Forms.Panel();
             this.InfoPanel = new System.Windows.Forms.Panel();
-            this.ExitButton = new System.Windows.Forms.Button();
             this.QianDaoCount = new System.Windows.Forms.Label();
-            this.ButtonDocument = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.ExitButton = new System.Windows.Forms.Button();
+            this.MyInfoButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -57,6 +59,7 @@
             this.MainPanel.SuspendLayout();
             this.BodyPanel.SuspendLayout();
             this.InfoPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // ButtonPractice
@@ -79,6 +82,7 @@
             // 
             // splitContainer1
             // 
+            this.splitContainer1.Cursor = System.Windows.Forms.Cursors.Default;
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
             this.splitContainer1.ForeColor = System.Drawing.SystemColors.ControlText;
@@ -105,6 +109,23 @@
             this.splitContainer1.SplitterWidth = 3;
             this.splitContainer1.TabIndex = 5;
             this.splitContainer1.SplitterMoved += new System.Windows.Forms.SplitterEventHandler(this.splitContainer1_SplitterMoved);
+            // 
+            // ButtonDocument
+            // 
+            this.ButtonDocument.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
+            this.ButtonDocument.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
+            this.ButtonDocument.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(242)))), ((int)(((byte)(253)))));
+            this.ButtonDocument.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(248)))), ((int)(((byte)(254)))));
+            this.ButtonDocument.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ButtonDocument.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.ButtonDocument.Location = new System.Drawing.Point(5, 225);
+            this.ButtonDocument.Name = "ButtonDocument";
+            this.ButtonDocument.Size = new System.Drawing.Size(190, 50);
+            this.ButtonDocument.TabIndex = 5;
+            this.ButtonDocument.Text = "文档查看";
+            this.ButtonDocument.UseVisualStyleBackColor = false;
+            this.ButtonDocument.MouseEnter += new System.EventHandler(this.ButtonDocument_MouseEnter);
+            this.ButtonDocument.MouseLeave += new System.EventHandler(this.ButtonDocument_MouseLeave);
             // 
             // ButtonLevel100
             // 
@@ -175,24 +196,6 @@
             this.richTextBox1.TabIndex = 0;
             this.richTextBox1.Text = "";
             // 
-            // MyInfoButton
-            // 
-            this.MyInfoButton.BackgroundImage = global::HomeWorkofPrincipleofMicrocomputerManager.Properties.Resources.head_logo;
-            this.MyInfoButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.MyInfoButton.FlatAppearance.BorderColor = System.Drawing.Color.WhiteSmoke;
-            this.MyInfoButton.FlatAppearance.BorderSize = 0;
-            this.MyInfoButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
-            this.MyInfoButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.MyInfoButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.MyInfoButton.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.MyInfoButton.Location = new System.Drawing.Point(7, 7);
-            this.MyInfoButton.Name = "MyInfoButton";
-            this.MyInfoButton.Size = new System.Drawing.Size(100, 36);
-            this.MyInfoButton.TabIndex = 7;
-            this.MyInfoButton.Text = "ID info";
-            this.MyInfoButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.MyInfoButton.UseVisualStyleBackColor = true;
-            // 
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
@@ -258,6 +261,7 @@
             // 
             // InfoPanel
             // 
+            this.InfoPanel.Controls.Add(this.pictureBox1);
             this.InfoPanel.Controls.Add(this.ExitButton);
             this.InfoPanel.Controls.Add(this.QianDaoCount);
             this.InfoPanel.Controls.Add(this.MyInfoButton);
@@ -266,6 +270,26 @@
             this.InfoPanel.Name = "InfoPanel";
             this.InfoPanel.Size = new System.Drawing.Size(990, 50);
             this.InfoPanel.TabIndex = 6;
+            // 
+            // QianDaoCount
+            // 
+            this.QianDaoCount.AutoSize = true;
+            this.QianDaoCount.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.QianDaoCount.Location = new System.Drawing.Point(240, 18);
+            this.QianDaoCount.Name = "QianDaoCount";
+            this.QianDaoCount.Size = new System.Drawing.Size(77, 14);
+            this.QianDaoCount.TabIndex = 8;
+            this.QianDaoCount.Text = "签到: 0 次";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pictureBox1.Location = new System.Drawing.Point(208, 10);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(25, 25);
+            this.pictureBox1.TabIndex = 10;
+            this.pictureBox1.TabStop = false;
             // 
             // ExitButton
             // 
@@ -285,32 +309,23 @@
             this.ExitButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.ExitButton.UseVisualStyleBackColor = true;
             // 
-            // QianDaoCount
+            // MyInfoButton
             // 
-            this.QianDaoCount.AutoSize = true;
-            this.QianDaoCount.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.QianDaoCount.Location = new System.Drawing.Point(213, 18);
-            this.QianDaoCount.Name = "QianDaoCount";
-            this.QianDaoCount.Size = new System.Drawing.Size(77, 14);
-            this.QianDaoCount.TabIndex = 8;
-            this.QianDaoCount.Text = "签到: 0 次";
-            // 
-            // ButtonDocument
-            // 
-            this.ButtonDocument.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
-            this.ButtonDocument.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
-            this.ButtonDocument.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(242)))), ((int)(((byte)(253)))));
-            this.ButtonDocument.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(248)))), ((int)(((byte)(254)))));
-            this.ButtonDocument.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ButtonDocument.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.ButtonDocument.Location = new System.Drawing.Point(5, 225);
-            this.ButtonDocument.Name = "ButtonDocument";
-            this.ButtonDocument.Size = new System.Drawing.Size(190, 50);
-            this.ButtonDocument.TabIndex = 5;
-            this.ButtonDocument.Text = "文档查看";
-            this.ButtonDocument.UseVisualStyleBackColor = false;
-            this.ButtonDocument.MouseEnter += new System.EventHandler(this.ButtonDocument_MouseEnter);
-            this.ButtonDocument.MouseLeave += new System.EventHandler(this.ButtonDocument_MouseLeave);
+            this.MyInfoButton.BackgroundImage = global::HomeWorkofPrincipleofMicrocomputerManager.Properties.Resources.head_logo;
+            this.MyInfoButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.MyInfoButton.FlatAppearance.BorderColor = System.Drawing.Color.WhiteSmoke;
+            this.MyInfoButton.FlatAppearance.BorderSize = 0;
+            this.MyInfoButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
+            this.MyInfoButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.MyInfoButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.MyInfoButton.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.MyInfoButton.Location = new System.Drawing.Point(7, 7);
+            this.MyInfoButton.Name = "MyInfoButton";
+            this.MyInfoButton.Size = new System.Drawing.Size(100, 36);
+            this.MyInfoButton.TabIndex = 7;
+            this.MyInfoButton.Text = "ID info";
+            this.MyInfoButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.MyInfoButton.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
@@ -336,6 +351,7 @@
             this.BodyPanel.ResumeLayout(false);
             this.InfoPanel.ResumeLayout(false);
             this.InfoPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -363,6 +379,7 @@
         private System.Windows.Forms.Button ButtonLevel100;
         private System.Windows.Forms.Button ButtonLevel95;
         private System.Windows.Forms.Button ButtonDocument;
+        private System.Windows.Forms.PictureBox pictureBox1;
 
     }
 }
