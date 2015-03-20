@@ -101,7 +101,7 @@
             // ErrorsLabel
             // 
             this.ErrorsLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(81)))), ((int)(((byte)(55)))));
-            this.ErrorsLabel.Location = new System.Drawing.Point(100, 322);
+            this.ErrorsLabel.Location = new System.Drawing.Point(100, 319);
             this.ErrorsLabel.Name = "ErrorsLabel";
             this.ErrorsLabel.Size = new System.Drawing.Size(200, 23);
             this.ErrorsLabel.TabIndex = 7;
@@ -135,6 +135,7 @@
             // 
             // LoginForm
             // 
+            this.AcceptButton = this.Login;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(243)))), ((int)(((byte)(239)))));

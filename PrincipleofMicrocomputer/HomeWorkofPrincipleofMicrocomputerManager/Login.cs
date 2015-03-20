@@ -13,10 +13,17 @@ namespace HomeWorkofPrincipleofMicrocomputerManager
     public partial class LoginForm : Form
     {
         private MySqlConnection conn;
-        private MySqlDataAdapter da;
-        private MySqlCommand cmd;
-        public static String serverip = "localhost";
-        public static bool isChangeIP = false;
+        //private MySqlDataAdapter da;
+        MySqlCommand cmd;
+        public static string serverip = "localhost";//服务器IP地址
+        public static bool isChangeIP = false;//记录IP地址改变
+        public static string userid;//用户名
+        public static string username;//用户姓名
+        public static string password;//密码
+        public static string usertype;//用户类型
+        public static string classname;//专业
+        public static int logincount;//登录次数
+        public static int zancount;//点赞次数
         
         public LoginForm()
         {
@@ -40,18 +47,18 @@ namespace HomeWorkofPrincipleofMicrocomputerManager
         //登陆按钮
         private void Login_Click(object sender, EventArgs e)
         {
-            String userid = IdTextBox.Text;
-            String password = PassWordTextBox.Text;
+            string userid2 = IdTextBox.Text;
+            string password2 = PassWordTextBox.Text;
             MySqlDataReader reader = null;
             int i = 0;//判断用户名或者密码是否错误
 
-            if (userid == "" || password == "")
+            if (userid2 == "" || password2 == "")
             {
                 ErrorsLabel.Text = "用户名或密码不能为空";
             }
             else 
             {
-                String connStr = String.Format("server={0};user id=root; password=; database=wjylsystem; pooling=false",
+                string connStr = String.Format("server={0};user id=root; password=; database=wjylsystem; pooling=false",
                 serverip);
 
                 try
@@ -60,18 +67,22 @@ namespace HomeWorkofPrincipleofMicrocomputerManager
                     conn = new MySqlConnection(connStr);
                     conn.Open();
                     //数据库查询代码
-                    cmd = new MySqlCommand("select * from userinfo where userid='" + userid + "' AND password='" + password + "'", conn);
+                    cmd = new MySqlCommand("select * from userinfo where userid='" + userid2 + "' AND password='" + password2 + "'", conn);
                     //查询结果放到reader中
                     reader = cmd.ExecuteReader();
                     //读取reader内容
                     while (reader.Read())
                     {
                         i++;
-                        MainForm mainform = new MainForm();
-                        mainform.Show();
-                        this.Hide();
+                        userid = reader.GetString(0);
+                        username = reader.GetString(1);
+                        password = reader.GetString(2);
+                        usertype = reader.GetString(3);
+                        classname = reader.GetString(4);
+                        logincount = reader.GetInt16(5);
+                        zancount = reader.GetInt16(6);
+                        //ErrorsLabel.Text = String.Format("i：{6} 用户ID：{0} 姓名：{7} 密码：{1} 用户类型：{2} 专业：{3} 登录次数：{4} 点赞数量：{5}", userid, password, usertype, classname, logincount, zancount, i, username);
                     }
-                    if (i == 0) ErrorsLabel.Text = "用户名或密码错误";
                 }
                 catch (MySqlException ex)
                 {
@@ -82,6 +93,13 @@ namespace HomeWorkofPrincipleofMicrocomputerManager
                 {
                     if (reader != null) reader.Close();
                     if (conn != null)conn.Close();
+                    if (i == 0) ErrorsLabel.Text = "用户名或密码错误";
+                    else
+                    {
+                        MainForm mainform = new MainForm();
+                        mainform.Show();
+                        this.Hide();
+                    }
                 }
             }
         }

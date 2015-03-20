@@ -42,13 +42,13 @@
             this.开始NToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.继续CToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.Status1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.TimeStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.MainPanel = new System.Windows.Forms.Panel();
             this.BodyPanel = new System.Windows.Forms.Panel();
             this.InfoPanel = new System.Windows.Forms.Panel();
-            this.QianDaoCount = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.ExitButton = new System.Windows.Forms.Button();
+            this.QianDaoCount = new System.Windows.Forms.Label();
             this.MyInfoButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -227,18 +227,20 @@
             // statusStrip1
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.Status1});
+            this.TimeStatus});
             this.statusStrip1.Location = new System.Drawing.Point(0, 646);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(990, 22);
             this.statusStrip1.TabIndex = 7;
             this.statusStrip1.Text = "statusStrip1";
             // 
-            // Status1
+            // TimeStatus
             // 
-            this.Status1.Name = "Status1";
-            this.Status1.Size = new System.Drawing.Size(81, 17);
-            this.Status1.Text = "StatusLabel1";
+            this.TimeStatus.AutoSize = false;
+            this.TimeStatus.Name = "TimeStatus";
+            this.TimeStatus.Size = new System.Drawing.Size(600, 17);
+            this.TimeStatus.Text = "StatusLabel1";
+            this.TimeStatus.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // MainPanel
             // 
@@ -271,21 +273,11 @@
             this.InfoPanel.Size = new System.Drawing.Size(990, 50);
             this.InfoPanel.TabIndex = 6;
             // 
-            // QianDaoCount
-            // 
-            this.QianDaoCount.AutoSize = true;
-            this.QianDaoCount.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.QianDaoCount.Location = new System.Drawing.Point(240, 18);
-            this.QianDaoCount.Name = "QianDaoCount";
-            this.QianDaoCount.Size = new System.Drawing.Size(77, 14);
-            this.QianDaoCount.TabIndex = 8;
-            this.QianDaoCount.Text = "签到: 0 次";
-            // 
             // pictureBox1
             // 
             this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox1.Location = new System.Drawing.Point(208, 10);
+            this.pictureBox1.Location = new System.Drawing.Point(184, 10);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(25, 25);
             this.pictureBox1.TabIndex = 10;
@@ -301,13 +293,24 @@
             this.ExitButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.ExitButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ExitButton.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.ExitButton.Location = new System.Drawing.Point(120, 7);
+            this.ExitButton.Location = new System.Drawing.Point(98, 7);
             this.ExitButton.Name = "ExitButton";
             this.ExitButton.Size = new System.Drawing.Size(80, 36);
             this.ExitButton.TabIndex = 9;
             this.ExitButton.Text = "退 出";
             this.ExitButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.ExitButton.UseVisualStyleBackColor = true;
+            this.ExitButton.Click += new System.EventHandler(this.ExitButton_Click);
+            // 
+            // QianDaoCount
+            // 
+            this.QianDaoCount.AutoSize = true;
+            this.QianDaoCount.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.QianDaoCount.Location = new System.Drawing.Point(215, 18);
+            this.QianDaoCount.Name = "QianDaoCount";
+            this.QianDaoCount.Size = new System.Drawing.Size(77, 14);
+            this.QianDaoCount.TabIndex = 8;
+            this.QianDaoCount.Text = "签到: 0 次";
             // 
             // MyInfoButton
             // 
@@ -321,7 +324,7 @@
             this.MyInfoButton.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.MyInfoButton.Location = new System.Drawing.Point(7, 7);
             this.MyInfoButton.Name = "MyInfoButton";
-            this.MyInfoButton.Size = new System.Drawing.Size(100, 36);
+            this.MyInfoButton.Size = new System.Drawing.Size(85, 36);
             this.MyInfoButton.TabIndex = 7;
             this.MyInfoButton.Text = "ID info";
             this.MyInfoButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -339,6 +342,7 @@
             this.Name = "MainForm";
             this.Text = "微机原理实验考核系统";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
@@ -369,7 +373,7 @@
         private System.Windows.Forms.ToolStripMenuItem 继续CToolStripMenuItem;
         private System.Windows.Forms.Button MyInfoButton;
         private System.Windows.Forms.StatusStrip statusStrip1;
-        private System.Windows.Forms.ToolStripStatusLabel Status1;
+        private System.Windows.Forms.ToolStripStatusLabel TimeStatus;
         private System.Windows.Forms.Panel MainPanel;
         private System.Windows.Forms.Panel InfoPanel;
         private System.Windows.Forms.Panel BodyPanel;

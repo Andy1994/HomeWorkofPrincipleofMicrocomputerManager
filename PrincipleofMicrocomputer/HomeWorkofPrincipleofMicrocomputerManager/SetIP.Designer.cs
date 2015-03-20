@@ -79,7 +79,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "SetIPForm";
-            this.Text = "SetIP";
+            this.Text = "设置服务器地址";
             this.TopMost = true;
             this.Load += new System.EventHandler(this.SetIP_Load);
             this.ResumeLayout(false);

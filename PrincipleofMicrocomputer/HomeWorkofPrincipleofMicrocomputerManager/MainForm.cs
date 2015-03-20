@@ -6,16 +6,76 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using MySql.Data.MySqlClient;
 
 namespace HomeWorkofPrincipleofMicrocomputerManager
 {
     public partial class MainForm : Form
     {
-        int i = 1;
+        private MySqlConnection conn;
+        //private string serverip = LoginForm.serverip;
+        int i = 0;
         public MainForm()
         {
             StartPosition = FormStartPosition.CenterScreen;//窗口初始位置为屏幕中间
             InitializeComponent();
+            TimeStatus.Text = String.Format("用户ID：{0} 密码：{1} 用户类型：{2} 专业：{3} 登录次数：{4} 点赞数量：{5}", LoginForm.userid, LoginForm.password, LoginForm.usertype, LoginForm.classname, LoginForm.logincount, LoginForm.zancount);
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            MyInfoButton.Text = LoginForm.username;//按钮Text改成用户名字
+
+            //签到程序，一天只能签到一次
+            string today = DateTime.Now.ToString("yyyy-MM-dd");//取得今天日期
+
+            MySqlDataReader reader = null;
+            MySqlCommand cmd;
+
+            string connStr = String.Format("server={0};user id=root; password=; database=wjylsystem; pooling=false",
+                LoginForm.serverip);
+
+            try
+            {
+                //创建数据库链接
+                conn = new MySqlConnection(connStr);
+                conn.Open();
+                //数据库查询代码
+                cmd = new MySqlCommand("select * from loginlog where userid='" + LoginForm.userid + "' AND logindate='" + today + "'", conn);
+                //查询结果放到reader中
+                reader = cmd.ExecuteReader();
+                //当天签过到就不再签到，第一次登陆就签到，并记录日期
+                if (reader.HasRows)
+                {
+                    QianDaoCount.Text = String.Format("签到：{0}次", LoginForm.logincount);
+                }
+                else
+                {
+                    reader.Close();
+                    LoginForm.logincount++;
+                    QianDaoCount.Text = String.Format("签到：{0}次", LoginForm.logincount);
+                    //个人信息签到数据更新
+                    cmd = new MySqlCommand("update userinfo set logincount="+ LoginForm.logincount +" where userid='" + LoginForm.userid + "'", conn);
+                    cmd.ExecuteNonQuery();
+                    //签到记录更新
+                    cmd = new MySqlCommand("INSERT INTO loginlog (userid, logindate) VALUES ('" + LoginForm.userid + "','" + today + "')", conn);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            catch (MySqlException ex)
+            {
+                //MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                if (reader != null) reader.Close();
+                if (conn != null) conn.Close();
+            }
+        }
+
+        private void ExitButton_Click(object sender, EventArgs e)
+        {
+            
         }
 
         //点击关闭退出程序
