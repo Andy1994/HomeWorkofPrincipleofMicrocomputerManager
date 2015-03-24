@@ -58,7 +58,7 @@ namespace HomeWorkofPrincipleofMicrocomputerManager
             }
             else 
             {
-                string connStr = String.Format("server={0};user id=root; password=; database=wjylsystem; pooling=false",
+                string connStr = String.Format("server={0};user id=root; password=; database=wjylsystem; pooling=false; Charset=utf8",
                 serverip);
 
                 try
@@ -97,6 +97,7 @@ namespace HomeWorkofPrincipleofMicrocomputerManager
                     else
                     {
                         MainForm mainform = new MainForm();
+                        mainform.WindowState = FormWindowState.Maximized;//设置窗口最大化
                         mainform.Show();
                         this.Hide();
                     }
