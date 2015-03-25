@@ -31,12 +31,18 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.ButtonPractice = new System.Windows.Forms.Button();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.ButtonDocument = new System.Windows.Forms.Button();
+            this.ButtonMyAnswer = new System.Windows.Forms.Button();
             this.ButtonLevel100 = new System.Windows.Forms.Button();
             this.ButtonLevel95 = new System.Windows.Forms.Button();
             this.ButtonLevel80 = new System.Windows.Forms.Button();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.qustionSelectLable = new System.Windows.Forms.Label();
+            this.answerQuestionPanel = new System.Windows.Forms.Panel();
+            this.answerQuestionTextBox = new System.Windows.Forms.Panel();
+            this.answerQuestionRichTextBox = new System.Windows.Forms.RichTextBox();
+            this.answerQuesstionSubmit = new System.Windows.Forms.Panel();
+            this.buttonSubmit = new System.Windows.Forms.Button();
+            this.answerQuestionAddButton = new System.Windows.Forms.Panel();
             this.questionShow = new System.Windows.Forms.Panel();
             this.questionShowStatus = new System.Windows.Forms.Panel();
             this.questionShowQuestionNanduLable2 = new System.Windows.Forms.Label();
@@ -44,10 +50,7 @@
             this.questionShowQuestionLeixinLable2 = new System.Windows.Forms.Label();
             this.questionShowQuestionLeixinLable = new System.Windows.Forms.Label();
             this.questionShowTitleLable = new System.Windows.Forms.Label();
-            this.questionShowRichText = new System.Windows.Forms.RichTextBox();
-            this.answerQuestionRichTextBox = new System.Windows.Forms.RichTextBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.questionShowRichTextBox = new System.Windows.Forms.RichTextBox();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.mainMenu = new System.Windows.Forms.MenuStrip();
             this.开始NToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -57,14 +60,17 @@
             this.MainPanel = new System.Windows.Forms.Panel();
             this.BodyPanel = new System.Windows.Forms.Panel();
             this.InfoPanel = new System.Windows.Forms.Panel();
+            this.QianDaoCount = new System.Windows.Forms.Label();
+            this.answerInfoLabel = new System.Windows.Forms.Label();
+            this.heartPic = new System.Windows.Forms.PictureBox();
+            this.buttonUnderline = new System.Windows.Forms.Button();
+            this.buttonItalic = new System.Windows.Forms.Button();
+            this.buttonBold = new System.Windows.Forms.Button();
+            this.buttonAddImage = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.ExitButton = new System.Windows.Forms.Button();
-            this.QianDaoCount = new System.Windows.Forms.Label();
             this.MyInfoButton = new System.Windows.Forms.Button();
-            this.answerQuestionPanel = new System.Windows.Forms.Panel();
-            this.answerQuestionAddButton = new System.Windows.Forms.Panel();
-            this.answerQuesstionSubmit = new System.Windows.Forms.Panel();
-            this.answerQuestionTextBox = new System.Windows.Forms.Panel();
+            this.commentsLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -73,6 +79,10 @@
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
+            this.answerQuestionPanel.SuspendLayout();
+            this.answerQuestionTextBox.SuspendLayout();
+            this.answerQuesstionSubmit.SuspendLayout();
+            this.answerQuestionAddButton.SuspendLayout();
             this.questionShow.SuspendLayout();
             this.questionShowStatus.SuspendLayout();
             this.mainMenu.SuspendLayout();
@@ -80,11 +90,8 @@
             this.MainPanel.SuspendLayout();
             this.BodyPanel.SuspendLayout();
             this.InfoPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.heartPic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.answerQuestionPanel.SuspendLayout();
-            this.answerQuestionAddButton.SuspendLayout();
-            this.answerQuesstionSubmit.SuspendLayout();
-            this.answerQuestionTextBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // ButtonPractice
@@ -118,7 +125,7 @@
             // 
             this.splitContainer1.Panel1.AutoScroll = true;
             this.splitContainer1.Panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(241)))), ((int)(((byte)(242)))));
-            this.splitContainer1.Panel1.Controls.Add(this.ButtonDocument);
+            this.splitContainer1.Panel1.Controls.Add(this.ButtonMyAnswer);
             this.splitContainer1.Panel1.Controls.Add(this.ButtonLevel100);
             this.splitContainer1.Panel1.Controls.Add(this.ButtonLevel95);
             this.splitContainer1.Panel1.Controls.Add(this.ButtonLevel80);
@@ -134,23 +141,23 @@
             this.splitContainer1.TabIndex = 5;
             this.splitContainer1.SplitterMoved += new System.Windows.Forms.SplitterEventHandler(this.splitContainer1_SplitterMoved);
             // 
-            // ButtonDocument
+            // ButtonMyAnswer
             // 
-            this.ButtonDocument.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
-            this.ButtonDocument.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
-            this.ButtonDocument.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(242)))), ((int)(((byte)(253)))));
-            this.ButtonDocument.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(248)))), ((int)(((byte)(254)))));
-            this.ButtonDocument.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ButtonDocument.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.ButtonDocument.Location = new System.Drawing.Point(5, 225);
-            this.ButtonDocument.Name = "ButtonDocument";
-            this.ButtonDocument.Size = new System.Drawing.Size(170, 50);
-            this.ButtonDocument.TabIndex = 5;
-            this.ButtonDocument.Text = "文档查看";
-            this.ButtonDocument.UseVisualStyleBackColor = false;
-            this.ButtonDocument.Click += new System.EventHandler(this.ButtonDocument_Click);
-            this.ButtonDocument.MouseEnter += new System.EventHandler(this.ButtonDocument_MouseEnter);
-            this.ButtonDocument.MouseLeave += new System.EventHandler(this.ButtonDocument_MouseLeave);
+            this.ButtonMyAnswer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
+            this.ButtonMyAnswer.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
+            this.ButtonMyAnswer.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(242)))), ((int)(((byte)(253)))));
+            this.ButtonMyAnswer.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(248)))), ((int)(((byte)(254)))));
+            this.ButtonMyAnswer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ButtonMyAnswer.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.ButtonMyAnswer.Location = new System.Drawing.Point(5, 225);
+            this.ButtonMyAnswer.Name = "ButtonMyAnswer";
+            this.ButtonMyAnswer.Size = new System.Drawing.Size(170, 50);
+            this.ButtonMyAnswer.TabIndex = 5;
+            this.ButtonMyAnswer.Text = "我的回答";
+            this.ButtonMyAnswer.UseVisualStyleBackColor = false;
+            this.ButtonMyAnswer.Click += new System.EventHandler(this.ButtonMyAnswer_Click);
+            this.ButtonMyAnswer.MouseEnter += new System.EventHandler(this.ButtonMyAnswer_MouseEnter);
+            this.ButtonMyAnswer.MouseLeave += new System.EventHandler(this.ButtonMyAnswer_MouseLeave);
             // 
             // ButtonLevel100
             // 
@@ -238,10 +245,80 @@
             this.qustionSelectLable.Text = "<--选择题目";
             this.qustionSelectLable.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // answerQuestionPanel
+            // 
+            this.answerQuestionPanel.Controls.Add(this.answerQuestionTextBox);
+            this.answerQuestionPanel.Controls.Add(this.answerQuesstionSubmit);
+            this.answerQuestionPanel.Controls.Add(this.answerQuestionAddButton);
+            this.answerQuestionPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.answerQuestionPanel.Location = new System.Drawing.Point(0, 275);
+            this.answerQuestionPanel.Name = "answerQuestionPanel";
+            this.answerQuestionPanel.Size = new System.Drawing.Size(559, 296);
+            this.answerQuestionPanel.TabIndex = 7;
+            this.answerQuestionPanel.Visible = false;
+            // 
+            // answerQuestionTextBox
+            // 
+            this.answerQuestionTextBox.Controls.Add(this.answerQuestionRichTextBox);
+            this.answerQuestionTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.answerQuestionTextBox.Location = new System.Drawing.Point(0, 35);
+            this.answerQuestionTextBox.Name = "answerQuestionTextBox";
+            this.answerQuestionTextBox.Size = new System.Drawing.Size(559, 226);
+            this.answerQuestionTextBox.TabIndex = 5;
+            // 
+            // answerQuestionRichTextBox
+            // 
+            this.answerQuestionRichTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.answerQuestionRichTextBox.EnableAutoDragDrop = true;
+            this.answerQuestionRichTextBox.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.answerQuestionRichTextBox.Location = new System.Drawing.Point(0, 0);
+            this.answerQuestionRichTextBox.Name = "answerQuestionRichTextBox";
+            this.answerQuestionRichTextBox.Size = new System.Drawing.Size(559, 226);
+            this.answerQuestionRichTextBox.TabIndex = 0;
+            this.answerQuestionRichTextBox.Text = "";
+            // 
+            // answerQuesstionSubmit
+            // 
+            this.answerQuesstionSubmit.Controls.Add(this.commentsLabel);
+            this.answerQuesstionSubmit.Controls.Add(this.buttonSubmit);
+            this.answerQuesstionSubmit.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.answerQuesstionSubmit.ForeColor = System.Drawing.Color.White;
+            this.answerQuesstionSubmit.Location = new System.Drawing.Point(0, 261);
+            this.answerQuesstionSubmit.Name = "answerQuesstionSubmit";
+            this.answerQuesstionSubmit.Size = new System.Drawing.Size(559, 35);
+            this.answerQuesstionSubmit.TabIndex = 4;
+            // 
+            // buttonSubmit
+            // 
+            this.buttonSubmit.BackColor = System.Drawing.Color.LimeGreen;
+            this.buttonSubmit.FlatAppearance.BorderSize = 0;
+            this.buttonSubmit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonSubmit.Location = new System.Drawing.Point(3, 5);
+            this.buttonSubmit.Name = "buttonSubmit";
+            this.buttonSubmit.Size = new System.Drawing.Size(75, 25);
+            this.buttonSubmit.TabIndex = 2;
+            this.buttonSubmit.Text = "提交";
+            this.buttonSubmit.UseVisualStyleBackColor = false;
+            this.buttonSubmit.Click += new System.EventHandler(this.buttonSubmit_Click);
+            // 
+            // answerQuestionAddButton
+            // 
+            this.answerQuestionAddButton.Controls.Add(this.heartPic);
+            this.answerQuestionAddButton.Controls.Add(this.answerInfoLabel);
+            this.answerQuestionAddButton.Controls.Add(this.buttonUnderline);
+            this.answerQuestionAddButton.Controls.Add(this.buttonItalic);
+            this.answerQuestionAddButton.Controls.Add(this.buttonBold);
+            this.answerQuestionAddButton.Controls.Add(this.buttonAddImage);
+            this.answerQuestionAddButton.Dock = System.Windows.Forms.DockStyle.Top;
+            this.answerQuestionAddButton.Location = new System.Drawing.Point(0, 0);
+            this.answerQuestionAddButton.Name = "answerQuestionAddButton";
+            this.answerQuestionAddButton.Size = new System.Drawing.Size(559, 35);
+            this.answerQuestionAddButton.TabIndex = 3;
+            // 
             // questionShow
             // 
             this.questionShow.Controls.Add(this.questionShowStatus);
-            this.questionShow.Controls.Add(this.questionShowRichText);
+            this.questionShow.Controls.Add(this.questionShowRichTextBox);
             this.questionShow.Dock = System.Windows.Forms.DockStyle.Top;
             this.questionShow.Location = new System.Drawing.Point(0, 0);
             this.questionShow.Name = "questionShow";
@@ -266,7 +343,7 @@
             // 
             this.questionShowQuestionNanduLable2.Location = new System.Drawing.Point(160, 27);
             this.questionShowQuestionNanduLable2.Name = "questionShowQuestionNanduLable2";
-            this.questionShowQuestionNanduLable2.Size = new System.Drawing.Size(52, 25);
+            this.questionShowQuestionNanduLable2.Size = new System.Drawing.Size(40, 25);
             this.questionShowQuestionNanduLable2.TabIndex = 4;
             this.questionShowQuestionNanduLable2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -274,7 +351,7 @@
             // 
             this.questionShowQuestionNanduLable.Location = new System.Drawing.Point(116, 27);
             this.questionShowQuestionNanduLable.Name = "questionShowQuestionNanduLable";
-            this.questionShowQuestionNanduLable.Size = new System.Drawing.Size(47, 25);
+            this.questionShowQuestionNanduLable.Size = new System.Drawing.Size(40, 25);
             this.questionShowQuestionNanduLable.TabIndex = 3;
             this.questionShowQuestionNanduLable.Text = "难度:";
             this.questionShowQuestionNanduLable.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -283,7 +360,7 @@
             // 
             this.questionShowQuestionLeixinLable2.Location = new System.Drawing.Point(66, 27);
             this.questionShowQuestionLeixinLable2.Name = "questionShowQuestionLeixinLable2";
-            this.questionShowQuestionLeixinLable2.Size = new System.Drawing.Size(59, 25);
+            this.questionShowQuestionLeixinLable2.Size = new System.Drawing.Size(45, 25);
             this.questionShowQuestionLeixinLable2.TabIndex = 2;
             this.questionShowQuestionLeixinLable2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -307,45 +384,17 @@
             this.questionShowTitleLable.Text = "Title";
             this.questionShowTitleLable.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // questionShowRichText
+            // questionShowRichTextBox
             // 
-            this.questionShowRichText.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
-            this.questionShowRichText.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.questionShowRichText.Location = new System.Drawing.Point(0, 55);
-            this.questionShowRichText.Name = "questionShowRichText";
-            this.questionShowRichText.ReadOnly = true;
-            this.questionShowRichText.Size = new System.Drawing.Size(559, 220);
-            this.questionShowRichText.TabIndex = 3;
-            this.questionShowRichText.Text = "";
-            // 
-            // answerQuestionRichTextBox
-            // 
-            this.answerQuestionRichTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.answerQuestionRichTextBox.Location = new System.Drawing.Point(0, 0);
-            this.answerQuestionRichTextBox.Name = "answerQuestionRichTextBox";
-            this.answerQuestionRichTextBox.Size = new System.Drawing.Size(559, 226);
-            this.answerQuestionRichTextBox.TabIndex = 0;
-            this.answerQuestionRichTextBox.Text = "";
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(0, 6);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "插入图片";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(3, 6);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "提交";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.questionShowRichTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.questionShowRichTextBox.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.questionShowRichTextBox.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.questionShowRichTextBox.Location = new System.Drawing.Point(0, 55);
+            this.questionShowRichTextBox.Name = "questionShowRichTextBox";
+            this.questionShowRichTextBox.ReadOnly = true;
+            this.questionShowRichTextBox.Size = new System.Drawing.Size(559, 220);
+            this.questionShowRichTextBox.TabIndex = 3;
+            this.questionShowRichTextBox.Text = "";
             // 
             // openFileDialog1
             // 
@@ -388,8 +437,9 @@
             // TimeStatus
             // 
             this.TimeStatus.AutoSize = false;
+            this.TimeStatus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(237)))), ((int)(((byte)(237)))));
             this.TimeStatus.Name = "TimeStatus";
-            this.TimeStatus.Size = new System.Drawing.Size(600, 17);
+            this.TimeStatus.Size = new System.Drawing.Size(300, 17);
             this.TimeStatus.Text = "StatusLabel1";
             this.TimeStatus.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -424,6 +474,98 @@
             this.InfoPanel.Size = new System.Drawing.Size(990, 50);
             this.InfoPanel.TabIndex = 6;
             // 
+            // QianDaoCount
+            // 
+            this.QianDaoCount.AutoSize = true;
+            this.QianDaoCount.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.QianDaoCount.Location = new System.Drawing.Point(215, 18);
+            this.QianDaoCount.Name = "QianDaoCount";
+            this.QianDaoCount.Size = new System.Drawing.Size(77, 14);
+            this.QianDaoCount.TabIndex = 8;
+            this.QianDaoCount.Text = "签到: 0 次";
+            // 
+            // answerInfoLabel
+            // 
+            this.answerInfoLabel.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.answerInfoLabel.Location = new System.Drawing.Point(151, 6);
+            this.answerInfoLabel.Name = "answerInfoLabel";
+            this.answerInfoLabel.Size = new System.Drawing.Size(408, 23);
+            this.answerInfoLabel.TabIndex = 5;
+            this.answerInfoLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // heartPic
+            // 
+            this.heartPic.Image = global::HomeWorkofPrincipleofMicrocomputerManager.Properties.Resources.heart;
+            this.heartPic.Location = new System.Drawing.Point(123, 5);
+            this.heartPic.Name = "heartPic";
+            this.heartPic.Size = new System.Drawing.Size(25, 25);
+            this.heartPic.TabIndex = 6;
+            this.heartPic.TabStop = false;
+            // 
+            // buttonUnderline
+            // 
+            this.buttonUnderline.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
+            this.buttonUnderline.BackgroundImage = global::HomeWorkofPrincipleofMicrocomputerManager.Properties.Resources.Underline;
+            this.buttonUnderline.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.buttonUnderline.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.buttonUnderline.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonUnderline.Location = new System.Drawing.Point(93, 5);
+            this.buttonUnderline.Name = "buttonUnderline";
+            this.buttonUnderline.Size = new System.Drawing.Size(25, 25);
+            this.buttonUnderline.TabIndex = 4;
+            this.buttonUnderline.UseVisualStyleBackColor = false;
+            this.buttonUnderline.Click += new System.EventHandler(this.buttonUnderline_Click);
+            this.buttonUnderline.MouseLeave += new System.EventHandler(this.buttonUnderline_MouseLeave);
+            this.buttonUnderline.MouseHover += new System.EventHandler(this.buttonUnderline_MouseHover);
+            // 
+            // buttonItalic
+            // 
+            this.buttonItalic.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
+            this.buttonItalic.BackgroundImage = global::HomeWorkofPrincipleofMicrocomputerManager.Properties.Resources.Italic;
+            this.buttonItalic.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.buttonItalic.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.buttonItalic.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonItalic.Location = new System.Drawing.Point(63, 5);
+            this.buttonItalic.Name = "buttonItalic";
+            this.buttonItalic.Size = new System.Drawing.Size(25, 25);
+            this.buttonItalic.TabIndex = 3;
+            this.buttonItalic.UseVisualStyleBackColor = false;
+            this.buttonItalic.Click += new System.EventHandler(this.buttonItalic_Click);
+            this.buttonItalic.MouseLeave += new System.EventHandler(this.buttonItalic_MouseLeave);
+            this.buttonItalic.MouseHover += new System.EventHandler(this.buttonItalic_MouseHover);
+            // 
+            // buttonBold
+            // 
+            this.buttonBold.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
+            this.buttonBold.BackgroundImage = global::HomeWorkofPrincipleofMicrocomputerManager.Properties.Resources.bold2;
+            this.buttonBold.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.buttonBold.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.buttonBold.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonBold.Location = new System.Drawing.Point(33, 5);
+            this.buttonBold.Name = "buttonBold";
+            this.buttonBold.Size = new System.Drawing.Size(25, 25);
+            this.buttonBold.TabIndex = 2;
+            this.buttonBold.UseVisualStyleBackColor = false;
+            this.buttonBold.Click += new System.EventHandler(this.buttonBold_Click);
+            this.buttonBold.MouseLeave += new System.EventHandler(this.buttonBold_MouseLeave);
+            this.buttonBold.MouseHover += new System.EventHandler(this.buttonBold_MouseHover);
+            // 
+            // buttonAddImage
+            // 
+            this.buttonAddImage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
+            this.buttonAddImage.BackgroundImage = global::HomeWorkofPrincipleofMicrocomputerManager.Properties.Resources.insertImage;
+            this.buttonAddImage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.buttonAddImage.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.buttonAddImage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonAddImage.Location = new System.Drawing.Point(3, 5);
+            this.buttonAddImage.Name = "buttonAddImage";
+            this.buttonAddImage.Size = new System.Drawing.Size(25, 25);
+            this.buttonAddImage.TabIndex = 1;
+            this.buttonAddImage.UseVisualStyleBackColor = false;
+            this.buttonAddImage.Click += new System.EventHandler(this.buttonAddImage_Click);
+            this.buttonAddImage.MouseLeave += new System.EventHandler(this.buttonAddImage_MouseLeave);
+            this.buttonAddImage.MouseHover += new System.EventHandler(this.buttonAddImage_MouseHover);
+            // 
             // pictureBox1
             // 
             this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
@@ -453,16 +595,6 @@
             this.ExitButton.UseVisualStyleBackColor = true;
             this.ExitButton.Click += new System.EventHandler(this.ExitButton_Click);
             // 
-            // QianDaoCount
-            // 
-            this.QianDaoCount.AutoSize = true;
-            this.QianDaoCount.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.QianDaoCount.Location = new System.Drawing.Point(215, 18);
-            this.QianDaoCount.Name = "QianDaoCount";
-            this.QianDaoCount.Size = new System.Drawing.Size(77, 14);
-            this.QianDaoCount.TabIndex = 8;
-            this.QianDaoCount.Text = "签到: 0 次";
-            // 
             // MyInfoButton
             // 
             this.MyInfoButton.BackgroundImage = global::HomeWorkofPrincipleofMicrocomputerManager.Properties.Resources.head_logo;
@@ -481,44 +613,15 @@
             this.MyInfoButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.MyInfoButton.UseVisualStyleBackColor = true;
             // 
-            // answerQuestionPanel
+            // commentsLabel
             // 
-            this.answerQuestionPanel.Controls.Add(this.answerQuestionTextBox);
-            this.answerQuestionPanel.Controls.Add(this.answerQuesstionSubmit);
-            this.answerQuestionPanel.Controls.Add(this.answerQuestionAddButton);
-            this.answerQuestionPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.answerQuestionPanel.Location = new System.Drawing.Point(0, 275);
-            this.answerQuestionPanel.Name = "answerQuestionPanel";
-            this.answerQuestionPanel.Size = new System.Drawing.Size(559, 296);
-            this.answerQuestionPanel.TabIndex = 7;
-            this.answerQuestionPanel.Visible = false;
-            // 
-            // answerQuestionAddButton
-            // 
-            this.answerQuestionAddButton.Controls.Add(this.button2);
-            this.answerQuestionAddButton.Dock = System.Windows.Forms.DockStyle.Top;
-            this.answerQuestionAddButton.Location = new System.Drawing.Point(0, 0);
-            this.answerQuestionAddButton.Name = "answerQuestionAddButton";
-            this.answerQuestionAddButton.Size = new System.Drawing.Size(559, 36);
-            this.answerQuestionAddButton.TabIndex = 3;
-            // 
-            // answerQuesstionSubmit
-            // 
-            this.answerQuesstionSubmit.Controls.Add(this.button1);
-            this.answerQuesstionSubmit.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.answerQuesstionSubmit.Location = new System.Drawing.Point(0, 262);
-            this.answerQuesstionSubmit.Name = "answerQuesstionSubmit";
-            this.answerQuesstionSubmit.Size = new System.Drawing.Size(559, 34);
-            this.answerQuesstionSubmit.TabIndex = 4;
-            // 
-            // answerQuestionTextBox
-            // 
-            this.answerQuestionTextBox.Controls.Add(this.answerQuestionRichTextBox);
-            this.answerQuestionTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.answerQuestionTextBox.Location = new System.Drawing.Point(0, 36);
-            this.answerQuestionTextBox.Name = "answerQuestionTextBox";
-            this.answerQuestionTextBox.Size = new System.Drawing.Size(559, 226);
-            this.answerQuestionTextBox.TabIndex = 5;
+            this.commentsLabel.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.commentsLabel.ForeColor = System.Drawing.Color.Black;
+            this.commentsLabel.Location = new System.Drawing.Point(83, 5);
+            this.commentsLabel.Name = "commentsLabel";
+            this.commentsLabel.Size = new System.Drawing.Size(464, 25);
+            this.commentsLabel.TabIndex = 3;
+            this.commentsLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // MainForm
             // 
@@ -541,6 +644,10 @@
             this.splitContainer2.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
+            this.answerQuestionPanel.ResumeLayout(false);
+            this.answerQuestionTextBox.ResumeLayout(false);
+            this.answerQuesstionSubmit.ResumeLayout(false);
+            this.answerQuestionAddButton.ResumeLayout(false);
             this.questionShow.ResumeLayout(false);
             this.questionShowStatus.ResumeLayout(false);
             this.mainMenu.ResumeLayout(false);
@@ -551,11 +658,8 @@
             this.BodyPanel.ResumeLayout(false);
             this.InfoPanel.ResumeLayout(false);
             this.InfoPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.heartPic)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.answerQuestionPanel.ResumeLayout(false);
-            this.answerQuestionAddButton.ResumeLayout(false);
-            this.answerQuesstionSubmit.ResumeLayout(false);
-            this.answerQuestionTextBox.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -565,7 +669,7 @@
 
         private System.Windows.Forms.Button ButtonPractice;
         private System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button buttonAddImage;
         private System.Windows.Forms.RichTextBox answerQuestionRichTextBox;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.MenuStrip mainMenu;
@@ -582,10 +686,10 @@
         private System.Windows.Forms.Button ButtonLevel80;
         private System.Windows.Forms.Button ButtonLevel100;
         private System.Windows.Forms.Button ButtonLevel95;
-        private System.Windows.Forms.Button ButtonDocument;
+        private System.Windows.Forms.Button ButtonMyAnswer;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.RichTextBox questionShowRichText;
+        private System.Windows.Forms.Button buttonSubmit;
+        private System.Windows.Forms.RichTextBox questionShowRichTextBox;
         private System.Windows.Forms.SplitContainer splitContainer2;
         private System.Windows.Forms.Label qustionSelectLable;
         private System.Windows.Forms.Panel questionShow;
@@ -599,6 +703,12 @@
         private System.Windows.Forms.Panel answerQuesstionSubmit;
         private System.Windows.Forms.Panel answerQuestionAddButton;
         private System.Windows.Forms.Panel answerQuestionTextBox;
+        private System.Windows.Forms.Button buttonBold;
+        private System.Windows.Forms.Button buttonItalic;
+        private System.Windows.Forms.Button buttonUnderline;
+        private System.Windows.Forms.Label answerInfoLabel;
+        private System.Windows.Forms.PictureBox heartPic;
+        private System.Windows.Forms.Label commentsLabel;
 
     }
 }
