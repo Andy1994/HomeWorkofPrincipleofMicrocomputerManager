@@ -24,7 +24,7 @@ namespace HomeWorkofPrincipleofMicrocomputerManager
         {
             StartPosition = FormStartPosition.CenterScreen;//窗口初始位置为屏幕中间
             InitializeComponent();
-            TimeStatus.Text = String.Format("用户ID：{0} 用户类型：{1} 专业：{2}", LoginForm.userid, LoginForm.usertype, LoginForm.classname);
+            TimeStatus.Text = String.Format("用户ID：{0}  姓名：{3}  专业：{2}  类型：{1}", LoginForm.userid, LoginForm.usertype, LoginForm.classname, LoginForm.username);
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -141,11 +141,12 @@ namespace HomeWorkofPrincipleofMicrocomputerManager
             string buttonName = null;
             int questionID2 = 0;
             int answerID = 0;
+            int correcting = 0;
             if (i == 1) sql = "select * from questiontable";
             else if (i == 2) sql = "select * from questiontable where difficulty='80'";
             else if (i == 3) sql = "select * from questiontable where difficulty='95'";
             else if (i == 4) sql = "select * from questiontable where difficulty='100'";
-            else if (i == 5) sql = String.Format("select * from answertable where userid='{0}' order by answerID desc", LoginForm.userid);
+            else if (i == 5) sql = "select * from answertable where userid='" + LoginForm.userid + "' order by answerID desc";
             try
             {
                 cmd = new MySqlCommand(sql, conn);
@@ -157,15 +158,16 @@ namespace HomeWorkofPrincipleofMicrocomputerManager
                     {
                         answerID = reader.GetInt32(0);
                         questionID2 = reader.GetInt32(3);
-                        buttonName = reader.GetString(4);
-                        addQuestionButton(LocationFlag, buttonName, questionID2, answerID);
+                        buttonName = reader.GetString(4)+" "+reader.GetString(2);
+                        correcting = reader.GetInt32(7);
+                        addQuestionButton(LocationFlag, buttonName, questionID2, answerID , correcting);
                         LocationFlag++;
                     }
                     else
                     {
                         questionID2 = reader.GetInt32(0);
                         buttonName = reader.GetString(1);
-                        addQuestionButton(LocationFlag, buttonName, questionID2, 0);
+                        addQuestionButton(LocationFlag, buttonName, questionID2, 0, 0);
                         LocationFlag++;
                     }
                 }
@@ -194,10 +196,10 @@ namespace HomeWorkofPrincipleofMicrocomputerManager
         }
 
         //为 题目/回答 添加按钮
-        void addQuestionButton(int i, string title, int qID, int aID)
+        void addQuestionButton(int i, string title, int qID, int aID , int correcting)
         {
             System.Windows.Forms.Button buttonX = new Button();
-            buttonX.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
+            buttonX.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(242)))), ((int)(((byte)(243)))));
             buttonX.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
             buttonX.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(242)))), ((int)(((byte)(253)))));
             buttonX.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(248)))), ((int)(((byte)(254)))));
@@ -213,8 +215,9 @@ namespace HomeWorkofPrincipleofMicrocomputerManager
             }
             else
             {
-                buttonX.Text = qID.ToString() + " " + title;
+                buttonX.Text = title;
                 buttonX.Tag = aID;
+                if (correcting == 1) buttonX.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(240)))));
                 buttonX.Click += new EventHandler(this.answerButton_Click);
             }
             splitContainer2.Panel1.Controls.Add(buttonX);
@@ -222,10 +225,15 @@ namespace HomeWorkofPrincipleofMicrocomputerManager
 
         private void answerButton_Click(object sender, EventArgs e)
         {
+            //恢复原来背景色
+            if (ButtonTag != null) ButtonTag.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(241)))), ((int)(((byte)(242)))));
+
             questionShowRichTextBox.Text = "";//清空问题box
             answerQuestionRichTextBox.Text = "";//清空回答box
             buttonSubmit.Text = "禁用";
             buttonSubmit.Enabled = false;//禁止提交按钮
+            answerInfoLabel.Visible = true;
+            commentsLabel.Visible = true;
             heartPic.Visible = false;
             answerQuestionRichTextBox.ReadOnly = true;
             commentsLabel.Text = "";
@@ -239,53 +247,14 @@ namespace HomeWorkofPrincipleofMicrocomputerManager
             //获取按钮Tag
             ButtonTag = (Button)sender;
             int aID = (int)(ButtonTag.Tag);//取得answerID
-            string str = ButtonTag.Text;
-            string num = null;
-            int qID = 0;
-            foreach (char item in str)
-            {
-                if (item >= 48 && item <= 58)
-                {
-                    num += item;
-                }
-                else break;
-            }
-            qID = int.Parse(num);//取得questionID
 
-            //显示题目
-            MySqlCommand cmd;
-            MySqlDataReader reader = null;
-            byte[] blob = null;
-            string sql = "select * from questiontable where questionID=" + qID + "";
-            try
-            {
-                cmd = new MySqlCommand(sql, conn);
-                conn.Open();
-                reader = cmd.ExecuteReader();
-                reader.Read();
-                questionID = reader.GetInt32(0);//取得题目ID
-                questionShowTitleLable.Text = reader.GetString(1);//显示题目
-                TimeStatus.Text = reader.GetString(1);//显示题目
-                questionShowQuestionLeixinLable2.Text = reader.GetString(2);//显示题目类型
-                questionShowQuestionNanduLable2.Text = reader.GetString(3);//显示题目难度
-                //显示题目内容
-                long len = reader.GetBytes(4, 0, null, 0, 0);
-                blob = new byte[len];
-                len = reader.GetBytes(4, 0, blob, 0, (int)len);
-                MemoryStream ms = new MemoryStream(blob, false);
-                questionShowRichTextBox.LoadFile(ms, RichTextBoxStreamType.RichText);
-            }
-            catch (MySqlException ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                if (reader != null) reader.Close();
-                if (conn != null) conn.Close();
-            }
+            //点击之后按钮背景色改变
+            ButtonTag.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
 
             //显示回答
+            MySqlCommand cmd;
+            MySqlDataReader reader = null;
+            int qID = 0;
             byte[] blob2 = null;
             string sql2 = "select * from answertable where answerID=" + aID + "";
             try
@@ -295,6 +264,7 @@ namespace HomeWorkofPrincipleofMicrocomputerManager
                 reader = cmd.ExecuteReader();
                 reader.Read();
                 string time = reader.GetString(2);//回答时间
+                qID = reader.GetInt32(3);
                 int correcting = reader.GetInt32(7);//是否批改
                 int score = reader.GetInt32(6);//分数
                 string comments = reader.GetString(8);//评语
@@ -326,6 +296,37 @@ namespace HomeWorkofPrincipleofMicrocomputerManager
                 if (reader != null) reader.Close();
                 if (conn != null) conn.Close();
             }
+
+            //显示题目
+            byte[] blob = null;
+            string sql = "select * from questiontable where questionID=" + qID + "";
+            try
+            {
+                cmd = new MySqlCommand(sql, conn);
+                conn.Open();
+                reader = cmd.ExecuteReader();
+                reader.Read();
+                questionID = reader.GetInt32(0);//取得题目ID
+                questionShowTitleLable.Text = reader.GetString(1);//显示题目
+                TimeStatus.Text = reader.GetString(1);//显示题目
+                questionShowQuestionLeixinLable2.Text = reader.GetString(2);//显示题目类型
+                questionShowQuestionNanduLable2.Text = reader.GetString(3);//显示题目难度
+                //显示题目内容
+                long len = reader.GetBytes(4, 0, null, 0, 0);
+                blob = new byte[len];
+                len = reader.GetBytes(4, 0, blob, 0, (int)len);
+                MemoryStream ms = new MemoryStream(blob, false);
+                questionShowRichTextBox.LoadFile(ms, RichTextBoxStreamType.RichText);
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                if (reader != null) reader.Close();
+                if (conn != null) conn.Close();
+            }
         }
 
         //题目按钮单击事件
@@ -336,12 +337,14 @@ namespace HomeWorkofPrincipleofMicrocomputerManager
             buttonSubmit.Text = "提交";
             buttonSubmit.Enabled = true;//开启提交按钮
             heartPic.Visible = false;
+            answerInfoLabel.Visible = false;
+            commentsLabel.Visible = false;
+
             answerQuestionRichTextBox.ReadOnly = false;
             answerQuestionRichTextBox.BackColor = System.Drawing.Color.FromArgb(255, 255, 255);
-            commentsLabel.Text = "";
 
-            //回复原来背景色
-            if(ButtonTag != null)ButtonTag.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
+            //恢复原来背景色
+            if(ButtonTag != null)ButtonTag.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(242)))), ((int)(((byte)(243)))));
             //显示问题
             if (!isShowQuestionShowPanel)
             {
@@ -501,36 +504,6 @@ namespace HomeWorkofPrincipleofMicrocomputerManager
             }
         }
 
-        private void button3_Click(object sender, EventArgs e)
-        {
-            MySqlCommand cmd;
-            MySqlDataReader reader = null;
-            byte[] blob = null;
-            try
-            {
-                string sql = "select * from test";
-                cmd = new MySqlCommand(sql, conn);
-                conn.Open();
-                reader = cmd.ExecuteReader();
-                if (reader.Read())
-                {
-                    long len = reader.GetBytes(0, 0, null, 0, 0);
-                    blob = new byte[len];
-                    len = reader.GetBytes(0, 0, blob, 0, (int)len);
-                    MemoryStream ms = new MemoryStream(blob, false);
-                    questionShowRichTextBox.LoadFile(ms, RichTextBoxStreamType.RichText);
-                }
-            }
-            catch (MySqlException ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                if(reader != null)reader.Close();
-                if(conn != null)conn.Close();
-            }
-        }
         //添加图片按钮
         private void buttonAddImage_Click(object sender, EventArgs e)
         {
@@ -630,6 +603,12 @@ namespace HomeWorkofPrincipleofMicrocomputerManager
                 newFont = new Font(oldFont, oldFont.Style | FontStyle.Underline);
             this.answerQuestionRichTextBox.SelectionFont = newFont;
             this.answerQuestionRichTextBox.Focus(); 
+        }
+
+        private void changePasswordButton_Click(object sender, EventArgs e)
+        {
+            changePassword changepassword = new changePassword();
+            changepassword.Show();
         }
     }
 }

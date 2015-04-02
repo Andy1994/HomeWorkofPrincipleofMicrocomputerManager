@@ -41,8 +41,15 @@
             this.answerQuestionTextBox = new System.Windows.Forms.Panel();
             this.answerQuestionRichTextBox = new System.Windows.Forms.RichTextBox();
             this.answerQuesstionSubmit = new System.Windows.Forms.Panel();
+            this.commentsLabel = new System.Windows.Forms.Label();
             this.buttonSubmit = new System.Windows.Forms.Button();
             this.answerQuestionAddButton = new System.Windows.Forms.Panel();
+            this.heartPic = new System.Windows.Forms.PictureBox();
+            this.answerInfoLabel = new System.Windows.Forms.Label();
+            this.buttonUnderline = new System.Windows.Forms.Button();
+            this.buttonItalic = new System.Windows.Forms.Button();
+            this.buttonBold = new System.Windows.Forms.Button();
+            this.buttonAddImage = new System.Windows.Forms.Button();
             this.questionShow = new System.Windows.Forms.Panel();
             this.questionShowStatus = new System.Windows.Forms.Panel();
             this.questionShowQuestionNanduLable2 = new System.Windows.Forms.Label();
@@ -54,23 +61,25 @@
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.mainMenu = new System.Windows.Forms.MenuStrip();
             this.开始NToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.继续CToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.TimeStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.MainPanel = new System.Windows.Forms.Panel();
             this.BodyPanel = new System.Windows.Forms.Panel();
             this.InfoPanel = new System.Windows.Forms.Panel();
-            this.QianDaoCount = new System.Windows.Forms.Label();
-            this.answerInfoLabel = new System.Windows.Forms.Label();
-            this.heartPic = new System.Windows.Forms.PictureBox();
-            this.buttonUnderline = new System.Windows.Forms.Button();
-            this.buttonItalic = new System.Windows.Forms.Button();
-            this.buttonBold = new System.Windows.Forms.Button();
-            this.buttonAddImage = new System.Windows.Forms.Button();
+            this.changePasswordButton = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.ExitButton = new System.Windows.Forms.Button();
+            this.QianDaoCount = new System.Windows.Forms.Label();
             this.MyInfoButton = new System.Windows.Forms.Button();
-            this.commentsLabel = new System.Windows.Forms.Label();
+            this.练习ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.分题目ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.分题目ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.分题目ToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.我的回答ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.退出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -83,6 +92,7 @@
             this.answerQuestionTextBox.SuspendLayout();
             this.answerQuesstionSubmit.SuspendLayout();
             this.answerQuestionAddButton.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.heartPic)).BeginInit();
             this.questionShow.SuspendLayout();
             this.questionShowStatus.SuspendLayout();
             this.mainMenu.SuspendLayout();
@@ -90,7 +100,6 @@
             this.MainPanel.SuspendLayout();
             this.BodyPanel.SuspendLayout();
             this.InfoPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.heartPic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -288,6 +297,16 @@
             this.answerQuesstionSubmit.Size = new System.Drawing.Size(559, 35);
             this.answerQuesstionSubmit.TabIndex = 4;
             // 
+            // commentsLabel
+            // 
+            this.commentsLabel.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.commentsLabel.ForeColor = System.Drawing.Color.Black;
+            this.commentsLabel.Location = new System.Drawing.Point(83, 5);
+            this.commentsLabel.Name = "commentsLabel";
+            this.commentsLabel.Size = new System.Drawing.Size(464, 25);
+            this.commentsLabel.TabIndex = 3;
+            this.commentsLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // buttonSubmit
             // 
             this.buttonSubmit.BackColor = System.Drawing.Color.LimeGreen;
@@ -314,6 +333,88 @@
             this.answerQuestionAddButton.Name = "answerQuestionAddButton";
             this.answerQuestionAddButton.Size = new System.Drawing.Size(559, 35);
             this.answerQuestionAddButton.TabIndex = 3;
+            // 
+            // heartPic
+            // 
+            this.heartPic.Image = global::HomeWorkofPrincipleofMicrocomputerManager.Properties.Resources.heart;
+            this.heartPic.Location = new System.Drawing.Point(123, 5);
+            this.heartPic.Name = "heartPic";
+            this.heartPic.Size = new System.Drawing.Size(25, 25);
+            this.heartPic.TabIndex = 6;
+            this.heartPic.TabStop = false;
+            // 
+            // answerInfoLabel
+            // 
+            this.answerInfoLabel.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.answerInfoLabel.Location = new System.Drawing.Point(151, 6);
+            this.answerInfoLabel.Name = "answerInfoLabel";
+            this.answerInfoLabel.Size = new System.Drawing.Size(408, 23);
+            this.answerInfoLabel.TabIndex = 5;
+            this.answerInfoLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // buttonUnderline
+            // 
+            this.buttonUnderline.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
+            this.buttonUnderline.BackgroundImage = global::HomeWorkofPrincipleofMicrocomputerManager.Properties.Resources.Underline;
+            this.buttonUnderline.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.buttonUnderline.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.buttonUnderline.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonUnderline.Location = new System.Drawing.Point(93, 5);
+            this.buttonUnderline.Name = "buttonUnderline";
+            this.buttonUnderline.Size = new System.Drawing.Size(25, 25);
+            this.buttonUnderline.TabIndex = 4;
+            this.buttonUnderline.UseVisualStyleBackColor = false;
+            this.buttonUnderline.Click += new System.EventHandler(this.buttonUnderline_Click);
+            this.buttonUnderline.MouseLeave += new System.EventHandler(this.buttonUnderline_MouseLeave);
+            this.buttonUnderline.MouseHover += new System.EventHandler(this.buttonUnderline_MouseHover);
+            // 
+            // buttonItalic
+            // 
+            this.buttonItalic.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
+            this.buttonItalic.BackgroundImage = global::HomeWorkofPrincipleofMicrocomputerManager.Properties.Resources.Italic;
+            this.buttonItalic.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.buttonItalic.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.buttonItalic.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonItalic.Location = new System.Drawing.Point(63, 5);
+            this.buttonItalic.Name = "buttonItalic";
+            this.buttonItalic.Size = new System.Drawing.Size(25, 25);
+            this.buttonItalic.TabIndex = 3;
+            this.buttonItalic.UseVisualStyleBackColor = false;
+            this.buttonItalic.Click += new System.EventHandler(this.buttonItalic_Click);
+            this.buttonItalic.MouseLeave += new System.EventHandler(this.buttonItalic_MouseLeave);
+            this.buttonItalic.MouseHover += new System.EventHandler(this.buttonItalic_MouseHover);
+            // 
+            // buttonBold
+            // 
+            this.buttonBold.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
+            this.buttonBold.BackgroundImage = global::HomeWorkofPrincipleofMicrocomputerManager.Properties.Resources.bold2;
+            this.buttonBold.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.buttonBold.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.buttonBold.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonBold.Location = new System.Drawing.Point(33, 5);
+            this.buttonBold.Name = "buttonBold";
+            this.buttonBold.Size = new System.Drawing.Size(25, 25);
+            this.buttonBold.TabIndex = 2;
+            this.buttonBold.UseVisualStyleBackColor = false;
+            this.buttonBold.Click += new System.EventHandler(this.buttonBold_Click);
+            this.buttonBold.MouseLeave += new System.EventHandler(this.buttonBold_MouseLeave);
+            this.buttonBold.MouseHover += new System.EventHandler(this.buttonBold_MouseHover);
+            // 
+            // buttonAddImage
+            // 
+            this.buttonAddImage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
+            this.buttonAddImage.BackgroundImage = global::HomeWorkofPrincipleofMicrocomputerManager.Properties.Resources.insertImage;
+            this.buttonAddImage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.buttonAddImage.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.buttonAddImage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonAddImage.Location = new System.Drawing.Point(3, 5);
+            this.buttonAddImage.Name = "buttonAddImage";
+            this.buttonAddImage.Size = new System.Drawing.Size(25, 25);
+            this.buttonAddImage.TabIndex = 1;
+            this.buttonAddImage.UseVisualStyleBackColor = false;
+            this.buttonAddImage.Click += new System.EventHandler(this.buttonAddImage_Click);
+            this.buttonAddImage.MouseLeave += new System.EventHandler(this.buttonAddImage_MouseLeave);
+            this.buttonAddImage.MouseHover += new System.EventHandler(this.buttonAddImage_MouseHover);
             // 
             // questionShow
             // 
@@ -404,8 +505,7 @@
             // 
             this.mainMenu.BackColor = System.Drawing.Color.WhiteSmoke;
             this.mainMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.开始NToolStripMenuItem,
-            this.继续CToolStripMenuItem});
+            this.开始NToolStripMenuItem});
             this.mainMenu.Location = new System.Drawing.Point(0, 0);
             this.mainMenu.Name = "mainMenu";
             this.mainMenu.Size = new System.Drawing.Size(990, 25);
@@ -414,15 +514,19 @@
             // 
             // 开始NToolStripMenuItem
             // 
+            this.开始NToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.练习ToolStripMenuItem,
+            this.toolStripSeparator1,
+            this.分题目ToolStripMenuItem,
+            this.分题目ToolStripMenuItem1,
+            this.分题目ToolStripMenuItem2,
+            this.toolStripSeparator2,
+            this.我的回答ToolStripMenuItem,
+            this.toolStripSeparator3,
+            this.退出ToolStripMenuItem});
             this.开始NToolStripMenuItem.Name = "开始NToolStripMenuItem";
             this.开始NToolStripMenuItem.Size = new System.Drawing.Size(62, 21);
             this.开始NToolStripMenuItem.Text = "开始(&N)";
-            // 
-            // 继续CToolStripMenuItem
-            // 
-            this.继续CToolStripMenuItem.Name = "继续CToolStripMenuItem";
-            this.继续CToolStripMenuItem.Size = new System.Drawing.Size(60, 21);
-            this.继续CToolStripMenuItem.Text = "继续(&C)";
             // 
             // statusStrip1
             // 
@@ -439,7 +543,7 @@
             this.TimeStatus.AutoSize = false;
             this.TimeStatus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(237)))), ((int)(((byte)(237)))));
             this.TimeStatus.Name = "TimeStatus";
-            this.TimeStatus.Size = new System.Drawing.Size(300, 17);
+            this.TimeStatus.Size = new System.Drawing.Size(350, 17);
             this.TimeStatus.Text = "StatusLabel1";
             this.TimeStatus.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -464,6 +568,7 @@
             // 
             // InfoPanel
             // 
+            this.InfoPanel.Controls.Add(this.changePasswordButton);
             this.InfoPanel.Controls.Add(this.pictureBox1);
             this.InfoPanel.Controls.Add(this.ExitButton);
             this.InfoPanel.Controls.Add(this.QianDaoCount);
@@ -474,97 +579,24 @@
             this.InfoPanel.Size = new System.Drawing.Size(990, 50);
             this.InfoPanel.TabIndex = 6;
             // 
-            // QianDaoCount
+            // changePasswordButton
             // 
-            this.QianDaoCount.AutoSize = true;
-            this.QianDaoCount.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.QianDaoCount.Location = new System.Drawing.Point(215, 18);
-            this.QianDaoCount.Name = "QianDaoCount";
-            this.QianDaoCount.Size = new System.Drawing.Size(77, 14);
-            this.QianDaoCount.TabIndex = 8;
-            this.QianDaoCount.Text = "签到: 0 次";
-            // 
-            // answerInfoLabel
-            // 
-            this.answerInfoLabel.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.answerInfoLabel.Location = new System.Drawing.Point(151, 6);
-            this.answerInfoLabel.Name = "answerInfoLabel";
-            this.answerInfoLabel.Size = new System.Drawing.Size(408, 23);
-            this.answerInfoLabel.TabIndex = 5;
-            this.answerInfoLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // heartPic
-            // 
-            this.heartPic.Image = global::HomeWorkofPrincipleofMicrocomputerManager.Properties.Resources.heart;
-            this.heartPic.Location = new System.Drawing.Point(123, 5);
-            this.heartPic.Name = "heartPic";
-            this.heartPic.Size = new System.Drawing.Size(25, 25);
-            this.heartPic.TabIndex = 6;
-            this.heartPic.TabStop = false;
-            // 
-            // buttonUnderline
-            // 
-            this.buttonUnderline.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
-            this.buttonUnderline.BackgroundImage = global::HomeWorkofPrincipleofMicrocomputerManager.Properties.Resources.Underline;
-            this.buttonUnderline.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.buttonUnderline.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.buttonUnderline.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonUnderline.Location = new System.Drawing.Point(93, 5);
-            this.buttonUnderline.Name = "buttonUnderline";
-            this.buttonUnderline.Size = new System.Drawing.Size(25, 25);
-            this.buttonUnderline.TabIndex = 4;
-            this.buttonUnderline.UseVisualStyleBackColor = false;
-            this.buttonUnderline.Click += new System.EventHandler(this.buttonUnderline_Click);
-            this.buttonUnderline.MouseLeave += new System.EventHandler(this.buttonUnderline_MouseLeave);
-            this.buttonUnderline.MouseHover += new System.EventHandler(this.buttonUnderline_MouseHover);
-            // 
-            // buttonItalic
-            // 
-            this.buttonItalic.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
-            this.buttonItalic.BackgroundImage = global::HomeWorkofPrincipleofMicrocomputerManager.Properties.Resources.Italic;
-            this.buttonItalic.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.buttonItalic.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.buttonItalic.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonItalic.Location = new System.Drawing.Point(63, 5);
-            this.buttonItalic.Name = "buttonItalic";
-            this.buttonItalic.Size = new System.Drawing.Size(25, 25);
-            this.buttonItalic.TabIndex = 3;
-            this.buttonItalic.UseVisualStyleBackColor = false;
-            this.buttonItalic.Click += new System.EventHandler(this.buttonItalic_Click);
-            this.buttonItalic.MouseLeave += new System.EventHandler(this.buttonItalic_MouseLeave);
-            this.buttonItalic.MouseHover += new System.EventHandler(this.buttonItalic_MouseHover);
-            // 
-            // buttonBold
-            // 
-            this.buttonBold.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
-            this.buttonBold.BackgroundImage = global::HomeWorkofPrincipleofMicrocomputerManager.Properties.Resources.bold2;
-            this.buttonBold.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.buttonBold.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.buttonBold.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonBold.Location = new System.Drawing.Point(33, 5);
-            this.buttonBold.Name = "buttonBold";
-            this.buttonBold.Size = new System.Drawing.Size(25, 25);
-            this.buttonBold.TabIndex = 2;
-            this.buttonBold.UseVisualStyleBackColor = false;
-            this.buttonBold.Click += new System.EventHandler(this.buttonBold_Click);
-            this.buttonBold.MouseLeave += new System.EventHandler(this.buttonBold_MouseLeave);
-            this.buttonBold.MouseHover += new System.EventHandler(this.buttonBold_MouseHover);
-            // 
-            // buttonAddImage
-            // 
-            this.buttonAddImage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
-            this.buttonAddImage.BackgroundImage = global::HomeWorkofPrincipleofMicrocomputerManager.Properties.Resources.insertImage;
-            this.buttonAddImage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.buttonAddImage.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.buttonAddImage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonAddImage.Location = new System.Drawing.Point(3, 5);
-            this.buttonAddImage.Name = "buttonAddImage";
-            this.buttonAddImage.Size = new System.Drawing.Size(25, 25);
-            this.buttonAddImage.TabIndex = 1;
-            this.buttonAddImage.UseVisualStyleBackColor = false;
-            this.buttonAddImage.Click += new System.EventHandler(this.buttonAddImage_Click);
-            this.buttonAddImage.MouseLeave += new System.EventHandler(this.buttonAddImage_MouseLeave);
-            this.buttonAddImage.MouseHover += new System.EventHandler(this.buttonAddImage_MouseHover);
+            this.changePasswordButton.BackgroundImage = global::HomeWorkofPrincipleofMicrocomputerManager.Properties.Resources.password3;
+            this.changePasswordButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.changePasswordButton.FlatAppearance.BorderColor = System.Drawing.Color.WhiteSmoke;
+            this.changePasswordButton.FlatAppearance.BorderSize = 0;
+            this.changePasswordButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
+            this.changePasswordButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.changePasswordButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.changePasswordButton.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.changePasswordButton.Location = new System.Drawing.Point(298, 8);
+            this.changePasswordButton.Name = "changePasswordButton";
+            this.changePasswordButton.Size = new System.Drawing.Size(93, 35);
+            this.changePasswordButton.TabIndex = 11;
+            this.changePasswordButton.Text = "密码修改";
+            this.changePasswordButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.changePasswordButton.UseVisualStyleBackColor = true;
+            this.changePasswordButton.Click += new System.EventHandler(this.changePasswordButton_Click);
             // 
             // pictureBox1
             // 
@@ -595,6 +627,16 @@
             this.ExitButton.UseVisualStyleBackColor = true;
             this.ExitButton.Click += new System.EventHandler(this.ExitButton_Click);
             // 
+            // QianDaoCount
+            // 
+            this.QianDaoCount.AutoSize = true;
+            this.QianDaoCount.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.QianDaoCount.Location = new System.Drawing.Point(215, 18);
+            this.QianDaoCount.Name = "QianDaoCount";
+            this.QianDaoCount.Size = new System.Drawing.Size(77, 14);
+            this.QianDaoCount.TabIndex = 8;
+            this.QianDaoCount.Text = "签到: 0 次";
+            // 
             // MyInfoButton
             // 
             this.MyInfoButton.BackgroundImage = global::HomeWorkofPrincipleofMicrocomputerManager.Properties.Resources.head_logo;
@@ -613,15 +655,62 @@
             this.MyInfoButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.MyInfoButton.UseVisualStyleBackColor = true;
             // 
-            // commentsLabel
+            // 练习ToolStripMenuItem
             // 
-            this.commentsLabel.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.commentsLabel.ForeColor = System.Drawing.Color.Black;
-            this.commentsLabel.Location = new System.Drawing.Point(83, 5);
-            this.commentsLabel.Name = "commentsLabel";
-            this.commentsLabel.Size = new System.Drawing.Size(464, 25);
-            this.commentsLabel.TabIndex = 3;
-            this.commentsLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.练习ToolStripMenuItem.Name = "练习ToolStripMenuItem";
+            this.练习ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.练习ToolStripMenuItem.Text = "练习";
+            this.练习ToolStripMenuItem.Click += new System.EventHandler(this.PracticeButton_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(149, 6);
+            // 
+            // 分题目ToolStripMenuItem
+            // 
+            this.分题目ToolStripMenuItem.Name = "分题目ToolStripMenuItem";
+            this.分题目ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.分题目ToolStripMenuItem.Text = "80分题目";
+            this.分题目ToolStripMenuItem.Click += new System.EventHandler(this.ButtonLevel80_Click);
+            // 
+            // 分题目ToolStripMenuItem1
+            // 
+            this.分题目ToolStripMenuItem1.Name = "分题目ToolStripMenuItem1";
+            this.分题目ToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.分题目ToolStripMenuItem1.Text = "95分题目";
+            this.分题目ToolStripMenuItem1.Click += new System.EventHandler(this.ButtonLevel95_Click);
+            // 
+            // 分题目ToolStripMenuItem2
+            // 
+            this.分题目ToolStripMenuItem2.Name = "分题目ToolStripMenuItem2";
+            this.分题目ToolStripMenuItem2.Size = new System.Drawing.Size(152, 22);
+            this.分题目ToolStripMenuItem2.Text = "100分题目";
+            this.分题目ToolStripMenuItem2.Click += new System.EventHandler(this.ButtonLevel100_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(149, 6);
+            // 
+            // 我的回答ToolStripMenuItem
+            // 
+            this.我的回答ToolStripMenuItem.Name = "我的回答ToolStripMenuItem";
+            this.我的回答ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.我的回答ToolStripMenuItem.Text = "我的回答";
+            this.我的回答ToolStripMenuItem.Click += new System.EventHandler(this.ButtonMyAnswer_Click);
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(149, 6);
+            // 
+            // 退出ToolStripMenuItem
+            // 
+            this.退出ToolStripMenuItem.Name = "退出ToolStripMenuItem";
+            this.退出ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.退出ToolStripMenuItem.Text = "退出";
+            this.退出ToolStripMenuItem.Click += new System.EventHandler(this.ExitButton_Click);
             // 
             // MainForm
             // 
@@ -633,7 +722,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.MainMenuStrip = this.mainMenu;
             this.Name = "MainForm";
-            this.Text = "微机原理实验考核系统";
+            this.Text = "微机原理实验考核系统 学生端 1.0";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.splitContainer1.Panel1.ResumeLayout(false);
@@ -648,6 +737,7 @@
             this.answerQuestionTextBox.ResumeLayout(false);
             this.answerQuesstionSubmit.ResumeLayout(false);
             this.answerQuestionAddButton.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.heartPic)).EndInit();
             this.questionShow.ResumeLayout(false);
             this.questionShowStatus.ResumeLayout(false);
             this.mainMenu.ResumeLayout(false);
@@ -658,7 +748,6 @@
             this.BodyPanel.ResumeLayout(false);
             this.InfoPanel.ResumeLayout(false);
             this.InfoPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.heartPic)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -674,7 +763,6 @@
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.MenuStrip mainMenu;
         private System.Windows.Forms.ToolStripMenuItem 开始NToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 继续CToolStripMenuItem;
         private System.Windows.Forms.Button MyInfoButton;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel TimeStatus;
@@ -709,6 +797,16 @@
         private System.Windows.Forms.Label answerInfoLabel;
         private System.Windows.Forms.PictureBox heartPic;
         private System.Windows.Forms.Label commentsLabel;
+        private System.Windows.Forms.Button changePasswordButton;
+        private System.Windows.Forms.ToolStripMenuItem 练习ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripMenuItem 分题目ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 分题目ToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem 分题目ToolStripMenuItem2;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripMenuItem 我的回答ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.ToolStripMenuItem 退出ToolStripMenuItem;
 
     }
 }
