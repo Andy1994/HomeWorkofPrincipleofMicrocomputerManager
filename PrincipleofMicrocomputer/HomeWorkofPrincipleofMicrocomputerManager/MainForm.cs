@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
@@ -142,10 +141,10 @@ namespace HomeWorkofPrincipleofMicrocomputerManager
             int questionID2 = 0;
             int answerID = 0;
             int correcting = 0;
-            if (i == 1) sql = "select * from questiontable";
-            else if (i == 2) sql = "select * from questiontable where difficulty='80'";
-            else if (i == 3) sql = "select * from questiontable where difficulty='95'";
-            else if (i == 4) sql = "select * from questiontable where difficulty='100'";
+            if (i == 1) sql = "select * from questiontable order by questionID desc";
+            else if (i == 2) sql = "select * from questiontable where difficulty='80' order by questionID desc";
+            else if (i == 3) sql = "select * from questiontable where difficulty='95' order by questionID desc";
+            else if (i == 4) sql = "select * from questiontable where difficulty='100' order by questionID desc";
             else if (i == 5) sql = "select * from answertable where userid='" + LoginForm.userid + "' order by answerID desc";
             try
             {

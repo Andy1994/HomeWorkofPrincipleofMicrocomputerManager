@@ -63,16 +63,6 @@ namespace HomeWorkofPrincipleofMicrocomputerManager.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
-        internal static System.Drawing.Bitmap bold {
-            get {
-                object obj = ResourceManager.GetObject("bold", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
         internal static System.Drawing.Bitmap bold2 {
             get {
                 object obj = ResourceManager.GetObject("bold2", resourceCulture);
@@ -133,9 +123,9 @@ namespace HomeWorkofPrincipleofMicrocomputerManager.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
-        internal static System.Drawing.Bitmap notebook {
+        internal static System.Drawing.Bitmap notebook2 {
             get {
-                object obj = ResourceManager.GetObject("notebook", resourceCulture);
+                object obj = ResourceManager.GetObject("notebook2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -163,9 +153,9 @@ namespace HomeWorkofPrincipleofMicrocomputerManager.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
-        internal static System.Drawing.Bitmap Title21 {
+        internal static System.Drawing.Bitmap Title2 {
             get {
-                object obj = ResourceManager.GetObject("Title21", resourceCulture);
+                object obj = ResourceManager.GetObject("Title2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -173,9 +163,9 @@ namespace HomeWorkofPrincipleofMicrocomputerManager.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
-        internal static System.Drawing.Bitmap Title31 {
+        internal static System.Drawing.Bitmap Title3 {
             get {
-                object obj = ResourceManager.GetObject("Title31", resourceCulture);
+                object obj = ResourceManager.GetObject("Title3", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -183,9 +173,9 @@ namespace HomeWorkofPrincipleofMicrocomputerManager.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
-        internal static System.Drawing.Bitmap Title41 {
+        internal static System.Drawing.Bitmap Title4 {
             get {
-                object obj = ResourceManager.GetObject("Title41", resourceCulture);
+                object obj = ResourceManager.GetObject("Title4", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

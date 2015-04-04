@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
@@ -38,9 +37,9 @@ namespace HomeWorkofPrincipleofMicrocomputerManager
             int i = rd.Next(1, 10000)%3;
             switch(i)
             {
-                case 0: LoginBgi.BackgroundImage = global::HomeWorkofPrincipleofMicrocomputerManager.Properties.Resources.Title21; break;
-                case 1: LoginBgi.BackgroundImage = global::HomeWorkofPrincipleofMicrocomputerManager.Properties.Resources.Title31; break;
-                case 2: LoginBgi.BackgroundImage = global::HomeWorkofPrincipleofMicrocomputerManager.Properties.Resources.Title41; break;
+                case 0: LoginBgi.BackgroundImage = global::HomeWorkofPrincipleofMicrocomputerManager.Properties.Resources.Title2; break;
+                case 1: LoginBgi.BackgroundImage = global::HomeWorkofPrincipleofMicrocomputerManager.Properties.Resources.Title3; break;
+                case 2: LoginBgi.BackgroundImage = global::HomeWorkofPrincipleofMicrocomputerManager.Properties.Resources.Title4; break;
             }
         }
 
@@ -86,8 +85,7 @@ namespace HomeWorkofPrincipleofMicrocomputerManager
                 }
                 catch (MySqlException ex)
                 {
-                    ErrorsLabel.Text = "服务器连接错误";
-                    //MessageBox.Show("Error connecting to the server: " + ex.Message);
+                    MessageBox.Show("     服务器连接错误,请确认IP地址     ");
                 }
                 finally
                 {
