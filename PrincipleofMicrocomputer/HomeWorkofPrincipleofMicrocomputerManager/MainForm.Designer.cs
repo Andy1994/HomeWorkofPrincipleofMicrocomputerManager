@@ -80,6 +80,7 @@
             this.ExitButton = new System.Windows.Forms.Button();
             this.QianDaoCount = new System.Windows.Forms.Label();
             this.MyInfoButton = new System.Windows.Forms.Button();
+            this.ButtonPaper = new System.Windows.Forms.Button();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
@@ -132,6 +133,7 @@
             // 
             this.splitContainer1.Panel1.AutoScroll = true;
             this.splitContainer1.Panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(241)))), ((int)(((byte)(242)))));
+            this.splitContainer1.Panel1.Controls.Add(this.ButtonPaper);
             this.splitContainer1.Panel1.Controls.Add(this.ButtonMyAnswer);
             this.splitContainer1.Panel1.Controls.Add(this.ButtonLevel100);
             this.splitContainer1.Panel1.Controls.Add(this.ButtonLevel95);
@@ -710,6 +712,23 @@
             this.MyInfoButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.MyInfoButton.UseVisualStyleBackColor = true;
             // 
+            // ButtonPaper
+            // 
+            this.ButtonPaper.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
+            this.ButtonPaper.Enabled = false;
+            this.ButtonPaper.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
+            this.ButtonPaper.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(242)))), ((int)(((byte)(253)))));
+            this.ButtonPaper.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(248)))), ((int)(((byte)(254)))));
+            this.ButtonPaper.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ButtonPaper.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.ButtonPaper.Location = new System.Drawing.Point(5, 281);
+            this.ButtonPaper.Name = "ButtonPaper";
+            this.ButtonPaper.Size = new System.Drawing.Size(170, 50);
+            this.ButtonPaper.TabIndex = 6;
+            this.ButtonPaper.Text = "试 卷";
+            this.ButtonPaper.UseVisualStyleBackColor = false;
+            this.ButtonPaper.Click += new System.EventHandler(this.ButtonPaper_Click);
+            // 
             // MainForm
             // 
             this.BackColor = System.Drawing.Color.WhiteSmoke;
@@ -804,6 +823,7 @@
         private System.Windows.Forms.ToolStripMenuItem 我的回答ToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripMenuItem 退出ToolStripMenuItem;
+        private System.Windows.Forms.Button ButtonPaper;
 
     }
 }

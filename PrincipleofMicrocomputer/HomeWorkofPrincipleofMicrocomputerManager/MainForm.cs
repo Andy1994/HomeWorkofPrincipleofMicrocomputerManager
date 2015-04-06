@@ -17,7 +17,7 @@ namespace HomeWorkofPrincipleofMicrocomputerManager
         Button ButtonTag;
         private int ButtonBackColor = 0;
         private int questionID = 0;//当前问题ID
-        //private string serverip = LoginForm.serverip;
+        string[] questionArray;
 
         public MainForm()
         {
@@ -69,6 +69,40 @@ namespace HomeWorkofPrincipleofMicrocomputerManager
             catch (MySqlException ex)
             {
                 //MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                if (reader != null) reader.Close();
+                if (conn != null) conn.Close();
+            }
+
+
+            //取得试卷
+            try
+            {
+                conn.Open();
+                //数据库查询代码
+                cmd = new MySqlCommand("select * from teacherinfo where teachClass='"+LoginForm.classname+"'", conn);
+                //查询结果放到reader中
+                reader = cmd.ExecuteReader();
+                reader.Read();
+                string teacherName = reader.GetString(1);//取得教师姓名
+                reader.Close();
+                
+                cmd = new MySqlCommand("select * from papertable where teacherName='"+teacherName+"' order by paperID desc", conn);
+                reader = cmd.ExecuteReader();
+                //取得试卷
+                if (reader.HasRows)
+                {
+                    ButtonPaper.Enabled = true;
+                    reader.Read();
+                    ButtonPaper.Text = reader.GetString(2) + " " + reader.GetString(4);
+                    questionArray = reader.GetString(3).Split(',');
+                }
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.Message);
             }
             finally
             {
@@ -608,6 +642,36 @@ namespace HomeWorkofPrincipleofMicrocomputerManager
         {
             changePassword changepassword = new changePassword();
             changepassword.Show();
+        }
+
+        private void ButtonPaper_Click(object sender, EventArgs e)
+        {
+            RemoveButton();
+            int LocationFlag = 1;
+            int qID = 0;
+            for (int i = 1; i <= questionArray.Length; i++)
+            {
+                if (i % 2 == 1)
+                {
+                    qID = int.Parse(questionArray[i - 1]);
+                }
+                else 
+                {
+                    addQuestionButton(LocationFlag, questionArray[i-1], qID , 0, 0);
+                    LocationFlag++;
+                }
+            }
+            if (LocationFlag != 1)
+            {
+                if (this.Width == 1000 && LocationFlag > 8)
+                {
+                    splitContainer2.SplitterDistance += 15;
+                }
+                else if (this.Width > 1000 && LocationFlag > 12)
+                {
+                    splitContainer2.SplitterDistance += 15;
+                }
+            }
         }
     }
 }
