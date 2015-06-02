@@ -28,9 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.ButtonPractice = new System.Windows.Forms.Button();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.ButtonLevel70 = new System.Windows.Forms.Button();
+            this.ButtonPaper = new System.Windows.Forms.Button();
             this.ButtonMyAnswer = new System.Windows.Forms.Button();
             this.ButtonLevel100 = new System.Windows.Forms.Button();
             this.ButtonLevel95 = new System.Windows.Forms.Button();
@@ -63,6 +66,7 @@
             this.开始NToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.练习ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.分题目ToolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.分题目ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.分题目ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.分题目ToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
@@ -75,12 +79,18 @@
             this.MainPanel = new System.Windows.Forms.Panel();
             this.BodyPanel = new System.Windows.Forms.Panel();
             this.InfoPanel = new System.Windows.Forms.Panel();
+            this.TeacherMaButton = new System.Windows.Forms.Button();
+            this.TeacherMaBox = new System.Windows.Forms.TextBox();
+            this.TeacherMaLabel = new System.Windows.Forms.Label();
             this.changePasswordButton = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.ExitButton = new System.Windows.Forms.Button();
             this.QianDaoCount = new System.Windows.Forms.Label();
             this.MyInfoButton = new System.Windows.Forms.Button();
-            this.ButtonPaper = new System.Windows.Forms.Button();
+            this.LeftTimeLabel = new System.Windows.Forms.Label();
+            this.LeftTime = new System.Windows.Forms.Label();
+            this.AddTime = new System.Windows.Forms.Button();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
@@ -133,6 +143,7 @@
             // 
             this.splitContainer1.Panel1.AutoScroll = true;
             this.splitContainer1.Panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(241)))), ((int)(((byte)(242)))));
+            this.splitContainer1.Panel1.Controls.Add(this.ButtonLevel70);
             this.splitContainer1.Panel1.Controls.Add(this.ButtonPaper);
             this.splitContainer1.Panel1.Controls.Add(this.ButtonMyAnswer);
             this.splitContainer1.Panel1.Controls.Add(this.ButtonLevel100);
@@ -150,6 +161,41 @@
             this.splitContainer1.TabIndex = 5;
             this.splitContainer1.SplitterMoved += new System.Windows.Forms.SplitterEventHandler(this.splitContainer1_SplitterMoved);
             // 
+            // ButtonLevel70
+            // 
+            this.ButtonLevel70.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
+            this.ButtonLevel70.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
+            this.ButtonLevel70.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(242)))), ((int)(((byte)(253)))));
+            this.ButtonLevel70.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(248)))), ((int)(((byte)(254)))));
+            this.ButtonLevel70.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ButtonLevel70.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.ButtonLevel70.Location = new System.Drawing.Point(5, 60);
+            this.ButtonLevel70.Name = "ButtonLevel70";
+            this.ButtonLevel70.Size = new System.Drawing.Size(170, 50);
+            this.ButtonLevel70.TabIndex = 7;
+            this.ButtonLevel70.Text = "测试 70分题目";
+            this.ButtonLevel70.UseVisualStyleBackColor = false;
+            this.ButtonLevel70.Click += new System.EventHandler(this.ButtonLevel70_Click);
+            this.ButtonLevel70.MouseEnter += new System.EventHandler(this.ButtonLevel70_MouseEnter);
+            this.ButtonLevel70.MouseLeave += new System.EventHandler(this.ButtonLevel70_MouseLeave);
+            // 
+            // ButtonPaper
+            // 
+            this.ButtonPaper.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
+            this.ButtonPaper.Enabled = false;
+            this.ButtonPaper.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
+            this.ButtonPaper.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(242)))), ((int)(((byte)(253)))));
+            this.ButtonPaper.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(248)))), ((int)(((byte)(254)))));
+            this.ButtonPaper.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ButtonPaper.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.ButtonPaper.Location = new System.Drawing.Point(5, 335);
+            this.ButtonPaper.Name = "ButtonPaper";
+            this.ButtonPaper.Size = new System.Drawing.Size(170, 50);
+            this.ButtonPaper.TabIndex = 6;
+            this.ButtonPaper.Text = "试 卷";
+            this.ButtonPaper.UseVisualStyleBackColor = false;
+            this.ButtonPaper.Click += new System.EventHandler(this.ButtonPaper_Click);
+            // 
             // ButtonMyAnswer
             // 
             this.ButtonMyAnswer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
@@ -158,7 +204,7 @@
             this.ButtonMyAnswer.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(248)))), ((int)(((byte)(254)))));
             this.ButtonMyAnswer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ButtonMyAnswer.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.ButtonMyAnswer.Location = new System.Drawing.Point(5, 225);
+            this.ButtonMyAnswer.Location = new System.Drawing.Point(5, 280);
             this.ButtonMyAnswer.Name = "ButtonMyAnswer";
             this.ButtonMyAnswer.Size = new System.Drawing.Size(170, 50);
             this.ButtonMyAnswer.TabIndex = 5;
@@ -176,7 +222,7 @@
             this.ButtonLevel100.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(248)))), ((int)(((byte)(254)))));
             this.ButtonLevel100.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ButtonLevel100.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.ButtonLevel100.Location = new System.Drawing.Point(5, 170);
+            this.ButtonLevel100.Location = new System.Drawing.Point(5, 225);
             this.ButtonLevel100.Name = "ButtonLevel100";
             this.ButtonLevel100.Size = new System.Drawing.Size(170, 50);
             this.ButtonLevel100.TabIndex = 4;
@@ -194,11 +240,11 @@
             this.ButtonLevel95.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(248)))), ((int)(((byte)(254)))));
             this.ButtonLevel95.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ButtonLevel95.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.ButtonLevel95.Location = new System.Drawing.Point(5, 115);
+            this.ButtonLevel95.Location = new System.Drawing.Point(5, 170);
             this.ButtonLevel95.Name = "ButtonLevel95";
             this.ButtonLevel95.Size = new System.Drawing.Size(170, 50);
             this.ButtonLevel95.TabIndex = 3;
-            this.ButtonLevel95.Text = "测试 95分题目";
+            this.ButtonLevel95.Text = "测试 90分题目";
             this.ButtonLevel95.UseVisualStyleBackColor = false;
             this.ButtonLevel95.Click += new System.EventHandler(this.ButtonLevel95_Click);
             this.ButtonLevel95.MouseEnter += new System.EventHandler(this.ButtonLevel95_MouseEnter);
@@ -212,7 +258,7 @@
             this.ButtonLevel80.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(248)))), ((int)(((byte)(254)))));
             this.ButtonLevel80.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ButtonLevel80.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.ButtonLevel80.Location = new System.Drawing.Point(5, 60);
+            this.ButtonLevel80.Location = new System.Drawing.Point(5, 115);
             this.ButtonLevel80.Name = "ButtonLevel80";
             this.ButtonLevel80.Size = new System.Drawing.Size(170, 50);
             this.ButtonLevel80.TabIndex = 2;
@@ -226,7 +272,6 @@
             // 
             this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer2.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
-            this.splitContainer2.IsSplitterFixed = true;
             this.splitContainer2.Location = new System.Drawing.Point(0, 0);
             this.splitContainer2.Name = "splitContainer2";
             // 
@@ -241,7 +286,7 @@
             this.splitContainer2.Panel2.Controls.Add(this.answerQuestionPanel);
             this.splitContainer2.Panel2.Controls.Add(this.questionShow);
             this.splitContainer2.Size = new System.Drawing.Size(809, 571);
-            this.splitContainer2.SplitterDistance = 249;
+            this.splitContainer2.SplitterDistance = 250;
             this.splitContainer2.SplitterWidth = 1;
             this.splitContainer2.TabIndex = 6;
             // 
@@ -262,7 +307,7 @@
             this.answerQuestionPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.answerQuestionPanel.Location = new System.Drawing.Point(0, 275);
             this.answerQuestionPanel.Name = "answerQuestionPanel";
-            this.answerQuestionPanel.Size = new System.Drawing.Size(559, 296);
+            this.answerQuestionPanel.Size = new System.Drawing.Size(558, 296);
             this.answerQuestionPanel.TabIndex = 7;
             this.answerQuestionPanel.Visible = false;
             // 
@@ -272,7 +317,7 @@
             this.answerQuestionTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.answerQuestionTextBox.Location = new System.Drawing.Point(0, 35);
             this.answerQuestionTextBox.Name = "answerQuestionTextBox";
-            this.answerQuestionTextBox.Size = new System.Drawing.Size(559, 226);
+            this.answerQuestionTextBox.Size = new System.Drawing.Size(558, 226);
             this.answerQuestionTextBox.TabIndex = 5;
             // 
             // answerQuestionRichTextBox
@@ -282,7 +327,7 @@
             this.answerQuestionRichTextBox.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.answerQuestionRichTextBox.Location = new System.Drawing.Point(0, 0);
             this.answerQuestionRichTextBox.Name = "answerQuestionRichTextBox";
-            this.answerQuestionRichTextBox.Size = new System.Drawing.Size(559, 226);
+            this.answerQuestionRichTextBox.Size = new System.Drawing.Size(558, 226);
             this.answerQuestionRichTextBox.TabIndex = 0;
             this.answerQuestionRichTextBox.Text = "";
             // 
@@ -294,7 +339,7 @@
             this.answerQuesstionSubmit.ForeColor = System.Drawing.Color.White;
             this.answerQuesstionSubmit.Location = new System.Drawing.Point(0, 261);
             this.answerQuesstionSubmit.Name = "answerQuesstionSubmit";
-            this.answerQuesstionSubmit.Size = new System.Drawing.Size(559, 35);
+            this.answerQuesstionSubmit.Size = new System.Drawing.Size(558, 35);
             this.answerQuesstionSubmit.TabIndex = 4;
             // 
             // commentsLabel
@@ -331,7 +376,7 @@
             this.answerQuestionAddButton.Dock = System.Windows.Forms.DockStyle.Top;
             this.answerQuestionAddButton.Location = new System.Drawing.Point(0, 0);
             this.answerQuestionAddButton.Name = "answerQuestionAddButton";
-            this.answerQuestionAddButton.Size = new System.Drawing.Size(559, 35);
+            this.answerQuestionAddButton.Size = new System.Drawing.Size(558, 35);
             this.answerQuestionAddButton.TabIndex = 3;
             // 
             // heartPic
@@ -423,12 +468,15 @@
             this.questionShow.Dock = System.Windows.Forms.DockStyle.Top;
             this.questionShow.Location = new System.Drawing.Point(0, 0);
             this.questionShow.Name = "questionShow";
-            this.questionShow.Size = new System.Drawing.Size(559, 275);
+            this.questionShow.Size = new System.Drawing.Size(558, 275);
             this.questionShow.TabIndex = 6;
             this.questionShow.Visible = false;
             // 
             // questionShowStatus
             // 
+            this.questionShowStatus.Controls.Add(this.AddTime);
+            this.questionShowStatus.Controls.Add(this.LeftTime);
+            this.questionShowStatus.Controls.Add(this.LeftTimeLabel);
             this.questionShowStatus.Controls.Add(this.questionShowQuestionNanduLable2);
             this.questionShowStatus.Controls.Add(this.questionShowQuestionNanduLable);
             this.questionShowStatus.Controls.Add(this.questionShowQuestionLeixinLable2);
@@ -437,7 +485,7 @@
             this.questionShowStatus.Dock = System.Windows.Forms.DockStyle.Top;
             this.questionShowStatus.Location = new System.Drawing.Point(0, 0);
             this.questionShowStatus.Name = "questionShowStatus";
-            this.questionShowStatus.Size = new System.Drawing.Size(559, 54);
+            this.questionShowStatus.Size = new System.Drawing.Size(558, 54);
             this.questionShowStatus.TabIndex = 0;
             // 
             // questionShowQuestionNanduLable2
@@ -480,7 +528,7 @@
             this.questionShowTitleLable.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.questionShowTitleLable.Location = new System.Drawing.Point(0, 0);
             this.questionShowTitleLable.Name = "questionShowTitleLable";
-            this.questionShowTitleLable.Size = new System.Drawing.Size(559, 27);
+            this.questionShowTitleLable.Size = new System.Drawing.Size(558, 27);
             this.questionShowTitleLable.TabIndex = 0;
             this.questionShowTitleLable.Text = "Title";
             this.questionShowTitleLable.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -493,7 +541,7 @@
             this.questionShowRichTextBox.Location = new System.Drawing.Point(0, 55);
             this.questionShowRichTextBox.Name = "questionShowRichTextBox";
             this.questionShowRichTextBox.ReadOnly = true;
-            this.questionShowRichTextBox.Size = new System.Drawing.Size(559, 220);
+            this.questionShowRichTextBox.Size = new System.Drawing.Size(558, 220);
             this.questionShowRichTextBox.TabIndex = 3;
             this.questionShowRichTextBox.Text = "";
             // 
@@ -517,6 +565,7 @@
             this.开始NToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.练习ToolStripMenuItem,
             this.toolStripSeparator1,
+            this.分题目ToolStripMenuItem3,
             this.分题目ToolStripMenuItem,
             this.分题目ToolStripMenuItem1,
             this.分题目ToolStripMenuItem2,
@@ -540,6 +589,13 @@
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(130, 6);
             // 
+            // 分题目ToolStripMenuItem3
+            // 
+            this.分题目ToolStripMenuItem3.Name = "分题目ToolStripMenuItem3";
+            this.分题目ToolStripMenuItem3.Size = new System.Drawing.Size(133, 22);
+            this.分题目ToolStripMenuItem3.Text = "70分题目";
+            this.分题目ToolStripMenuItem3.Click += new System.EventHandler(this.ButtonLevel70_Click);
+            // 
             // 分题目ToolStripMenuItem
             // 
             this.分题目ToolStripMenuItem.Name = "分题目ToolStripMenuItem";
@@ -551,7 +607,7 @@
             // 
             this.分题目ToolStripMenuItem1.Name = "分题目ToolStripMenuItem1";
             this.分题目ToolStripMenuItem1.Size = new System.Drawing.Size(133, 22);
-            this.分题目ToolStripMenuItem1.Text = "95分题目";
+            this.分题目ToolStripMenuItem1.Text = "90分题目";
             this.分题目ToolStripMenuItem1.Click += new System.EventHandler(this.ButtonLevel95_Click);
             // 
             // 分题目ToolStripMenuItem2
@@ -600,7 +656,7 @@
             this.TimeStatus.AutoSize = false;
             this.TimeStatus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(237)))), ((int)(((byte)(237)))));
             this.TimeStatus.Name = "TimeStatus";
-            this.TimeStatus.Size = new System.Drawing.Size(350, 17);
+            this.TimeStatus.Size = new System.Drawing.Size(500, 17);
             this.TimeStatus.Text = "StatusLabel1";
             this.TimeStatus.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -625,6 +681,9 @@
             // 
             // InfoPanel
             // 
+            this.InfoPanel.Controls.Add(this.TeacherMaButton);
+            this.InfoPanel.Controls.Add(this.TeacherMaBox);
+            this.InfoPanel.Controls.Add(this.TeacherMaLabel);
             this.InfoPanel.Controls.Add(this.changePasswordButton);
             this.InfoPanel.Controls.Add(this.pictureBox1);
             this.InfoPanel.Controls.Add(this.ExitButton);
@@ -635,6 +694,41 @@
             this.InfoPanel.Name = "InfoPanel";
             this.InfoPanel.Size = new System.Drawing.Size(990, 50);
             this.InfoPanel.TabIndex = 6;
+            // 
+            // TeacherMaButton
+            // 
+            this.TeacherMaButton.BackColor = System.Drawing.Color.LimeGreen;
+            this.TeacherMaButton.FlatAppearance.BorderSize = 0;
+            this.TeacherMaButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.TeacherMaButton.ForeColor = System.Drawing.Color.White;
+            this.TeacherMaButton.Location = new System.Drawing.Point(548, 16);
+            this.TeacherMaButton.Name = "TeacherMaButton";
+            this.TeacherMaButton.Size = new System.Drawing.Size(50, 20);
+            this.TeacherMaButton.TabIndex = 14;
+            this.TeacherMaButton.Text = "提交";
+            this.TeacherMaButton.UseVisualStyleBackColor = false;
+            this.TeacherMaButton.Visible = false;
+            this.TeacherMaButton.Click += new System.EventHandler(this.TeacherMaButton_Click);
+            // 
+            // TeacherMaBox
+            // 
+            this.TeacherMaBox.Location = new System.Drawing.Point(457, 15);
+            this.TeacherMaBox.Name = "TeacherMaBox";
+            this.TeacherMaBox.PasswordChar = '*';
+            this.TeacherMaBox.Size = new System.Drawing.Size(85, 21);
+            this.TeacherMaBox.TabIndex = 13;
+            this.TeacherMaBox.Visible = false;
+            // 
+            // TeacherMaLabel
+            // 
+            this.TeacherMaLabel.AutoSize = true;
+            this.TeacherMaLabel.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.TeacherMaLabel.Location = new System.Drawing.Point(397, 18);
+            this.TeacherMaLabel.Name = "TeacherMaLabel";
+            this.TeacherMaLabel.Size = new System.Drawing.Size(56, 14);
+            this.TeacherMaLabel.TabIndex = 12;
+            this.TeacherMaLabel.Text = "教师码:";
+            this.TeacherMaLabel.Visible = false;
             // 
             // changePasswordButton
             // 
@@ -712,22 +806,40 @@
             this.MyInfoButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.MyInfoButton.UseVisualStyleBackColor = true;
             // 
-            // ButtonPaper
+            // LeftTimeLabel
             // 
-            this.ButtonPaper.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
-            this.ButtonPaper.Enabled = false;
-            this.ButtonPaper.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
-            this.ButtonPaper.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(242)))), ((int)(((byte)(253)))));
-            this.ButtonPaper.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(248)))), ((int)(((byte)(254)))));
-            this.ButtonPaper.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ButtonPaper.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.ButtonPaper.Location = new System.Drawing.Point(5, 281);
-            this.ButtonPaper.Name = "ButtonPaper";
-            this.ButtonPaper.Size = new System.Drawing.Size(170, 50);
-            this.ButtonPaper.TabIndex = 6;
-            this.ButtonPaper.Text = "试 卷";
-            this.ButtonPaper.UseVisualStyleBackColor = false;
-            this.ButtonPaper.Click += new System.EventHandler(this.ButtonPaper_Click);
+            this.LeftTimeLabel.Location = new System.Drawing.Point(206, 27);
+            this.LeftTimeLabel.Name = "LeftTimeLabel";
+            this.LeftTimeLabel.Size = new System.Drawing.Size(66, 25);
+            this.LeftTimeLabel.TabIndex = 5;
+            this.LeftTimeLabel.Text = "剩余时间:";
+            this.LeftTimeLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.LeftTimeLabel.Visible = false;
+            // 
+            // LeftTime
+            // 
+            this.LeftTime.Location = new System.Drawing.Point(278, 27);
+            this.LeftTime.Name = "LeftTime";
+            this.LeftTime.Size = new System.Drawing.Size(59, 25);
+            this.LeftTime.TabIndex = 6;
+            this.LeftTime.Text = "100 分钟";
+            this.LeftTime.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.LeftTime.Visible = false;
+            // 
+            // AddTime
+            // 
+            this.AddTime.BackColor = System.Drawing.Color.LimeGreen;
+            this.AddTime.FlatAppearance.BorderSize = 0;
+            this.AddTime.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.AddTime.ForeColor = System.Drawing.Color.White;
+            this.AddTime.Location = new System.Drawing.Point(343, 29);
+            this.AddTime.Name = "AddTime";
+            this.AddTime.Size = new System.Drawing.Size(20, 20);
+            this.AddTime.TabIndex = 15;
+            this.AddTime.Text = "+";
+            this.AddTime.UseVisualStyleBackColor = false;
+            this.AddTime.Visible = false;
+            this.AddTime.Click += new System.EventHandler(this.AddTime_Click);
             // 
             // MainForm
             // 
@@ -824,6 +936,15 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripMenuItem 退出ToolStripMenuItem;
         private System.Windows.Forms.Button ButtonPaper;
+        private System.Windows.Forms.Button ButtonLevel70;
+        private System.Windows.Forms.Button TeacherMaButton;
+        private System.Windows.Forms.TextBox TeacherMaBox;
+        private System.Windows.Forms.Label TeacherMaLabel;
+        private System.Windows.Forms.ToolStripMenuItem 分题目ToolStripMenuItem3;
+        private System.Windows.Forms.Button AddTime;
+        private System.Windows.Forms.Label LeftTime;
+        private System.Windows.Forms.Label LeftTimeLabel;
+        private System.Windows.Forms.Timer timer1;
 
     }
 }

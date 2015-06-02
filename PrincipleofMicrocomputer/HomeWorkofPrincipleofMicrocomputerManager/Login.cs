@@ -15,6 +15,7 @@ namespace HomeWorkofPrincipleofMicrocomputerManager
         //private MySqlDataAdapter da;
         MySqlCommand cmd;
         public static string serverip = "localhost";//服务器IP地址
+        //public static string serverip = "192.168.1.143";//服务器IP地址
         public static bool isChangeIP = false;//记录IP地址改变
         public static string userid;//用户名
         public static string username;//用户姓名
@@ -23,6 +24,7 @@ namespace HomeWorkofPrincipleofMicrocomputerManager
         public static string classname;//专业
         public static int logincount;//登录次数
         public static int zancount;//点赞次数
+        public static int istest;//是否考试中
         
         public LoginForm()
         {
@@ -78,8 +80,9 @@ namespace HomeWorkofPrincipleofMicrocomputerManager
                         password = reader.GetString(2);
                         usertype = reader.GetString(3);
                         classname = reader.GetString(4);
-                        logincount = reader.GetInt16(5);
-                        zancount = reader.GetInt16(6);
+                        logincount = reader.GetInt32(5);
+                        zancount = reader.GetInt32(6);
+                        istest = reader.GetInt32(8);
                         //ErrorsLabel.Text = String.Format("i：{6} 用户ID：{0} 姓名：{7} 密码：{1} 用户类型：{2} 专业：{3} 登录次数：{4} 点赞数量：{5}", userid, password, usertype, classname, logincount, zancount, i, username);
                     }
                 }

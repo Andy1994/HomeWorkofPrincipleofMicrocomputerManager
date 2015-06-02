@@ -18,6 +18,11 @@ namespace HomeWorkofPrincipleofMicrocomputerManager
         private int ButtonBackColor = 0;
         private int questionID = 0;//当前问题ID
         string[] questionArray;
+        bool isTest = false;
+        bool TeacherConfirm = false;
+        string TeacherMa;
+        int number70, number80, number90, number100, mintues70, mintues80, mintues90, mintues100;//考试设置，出题数量，考试时间
+        int AboutTime = 0;//倒计时记录时间
 
         public MainForm()
         {
@@ -28,7 +33,12 @@ namespace HomeWorkofPrincipleofMicrocomputerManager
 
         private void MainForm_Load(object sender, EventArgs e)
         {
+            if (LoginForm.istest == 1) isTest = true;
+            
             MyInfoButton.Text = LoginForm.username;//按钮Text改成用户名字
+            //启动计时
+            this.timer1.Interval = 60000; //设置间隔为一分钟
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
 
             //签到程序，一天只能签到一次
             string today = DateTime.Now.ToString("yyyy-MM-dd");//取得今天日期
@@ -99,6 +109,14 @@ namespace HomeWorkofPrincipleofMicrocomputerManager
                     ButtonPaper.Text = reader.GetString(2) + " " + reader.GetString(4);
                     questionArray = reader.GetString(3).Split(',');
                 }
+                reader.Close();
+
+                //取得教师码
+                cmd = new MySqlCommand("select * from userinfo where username='" + teacherName + "'", conn);
+                reader = cmd.ExecuteReader();
+                reader.Read();
+                TeacherMa = reader.GetString(4);
+                //TimeStatus.Text = TeacherMa;
             }
             catch (MySqlException ex)
             {
@@ -108,6 +126,61 @@ namespace HomeWorkofPrincipleofMicrocomputerManager
             {
                 if (reader != null) reader.Close();
                 if (conn != null) conn.Close();
+            }
+
+            //取得试卷设置
+            try
+            {
+                conn.Open();
+                //数据库查询代码
+                cmd = new MySqlCommand("select * from testsetting", conn);
+                //查询结果放到reader中
+                reader = cmd.ExecuteReader();
+                while(reader.Read())
+                {
+                    string level = reader.GetString(0);
+                    if (level == "70")
+                    {
+                        number70 = reader.GetInt32(1);
+                        mintues70 = reader.GetInt32(2);
+                    }
+                    else if (level == "80")
+                    {
+                        number80 = reader.GetInt32(1);
+                        mintues80 = reader.GetInt32(2);
+                    }
+                    else if (level == "90")
+                    {
+                        number90 = reader.GetInt32(1);
+                        mintues90 = reader.GetInt32(2);
+                    }
+                    else if (level == "100")
+                    {
+                        number100 = reader.GetInt32(1);
+                        mintues100 = reader.GetInt32(2);
+                    }
+                }
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                if (reader != null) reader.Close();
+                if (conn != null) conn.Close();
+            }
+        }
+
+        //计时
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            AboutTime--;
+            LeftTime.Text = AboutTime.ToString() + " 分钟";
+            if (AboutTime == 0)
+            {
+                SubmitTest();
+                MessageBox.Show("     时间到，自动交卷!     ");
             }
         }
 
@@ -122,41 +195,155 @@ namespace HomeWorkofPrincipleofMicrocomputerManager
             Application.Exit();
         }
 
-        private void PracticeButton_Click(object sender, EventArgs e)
+        void ClearQuestion()
         {
-            RemoveButton();
-            ButtonPractice.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(236)))), ((int)(((byte)(236)))));
-            RecoveryButtonBackColor(1);
-            addQuestion(1);
+            questionShowTitleLable.Text = "";
+            TimeStatus.Text = "";
+            questionShowQuestionLeixinLable2.Text = "";
+            questionShowQuestionNanduLable2.Text = "";
+            questionShowRichTextBox.Text = "";
+            answerQuestionRichTextBox.Text = "";
+            LeftTime.Text = "";
+            buttonSubmit.Enabled = true;
+            buttonSubmit.Text = "提交";
         }
 
+        void isTestEquelToTrue()
+        {
+            MySqlCommand cmd;
+            try
+            {
+                conn.Open();
+                //数据库查询代码
+                cmd = new MySqlCommand("update userinfo set istest=1 where userid='"+LoginForm.userid+"'", conn);
+                //查询结果放到reader中
+                cmd.ExecuteNonQuery();
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                if (conn != null) conn.Close();
+            }
+        }
+
+        void isTestEquelToFalse()
+        {
+            MySqlCommand cmd;
+            try
+            {
+                conn.Open();
+                //数据库查询代码
+                cmd = new MySqlCommand("update userinfo set istest=0 where userid='" + LoginForm.userid + "'", conn);
+                //查询结果放到reader中
+                cmd.ExecuteNonQuery();
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                if (conn != null) conn.Close();
+            }
+        }
+
+        void Reminder(int i)
+        {
+            string level = null;
+            if (i == 1) { level = "70"; AboutTime = mintues70; }
+            else if (i == 2) { level = "80"; AboutTime = mintues80; }
+            else if (i == 3) { level = "90"; AboutTime = mintues90; }
+            else if (i == 4) { level = "100"; AboutTime = mintues100; }
+            //消息框中需要显示哪些按钮，此处显示“确定”和“取消”
+            MessageBoxButtons messButton = MessageBoxButtons.OKCancel;
+            DialogResult dr = MessageBox.Show("确定选择"+level+"分的测试吗?", "", messButton);
+            if (dr == DialogResult.OK)
+            {
+                isTest = true;
+                isTestEquelToTrue();
+            }
+        }
+
+        void ConfirmTest(int i)
+        {
+            if (isTest && !TeacherConfirm)
+            {
+                MessageBox.Show("     想要抽题请联系教师!     ");
+                TeacherMaLabel.Visible = true;
+                TeacherMaBox.Visible = true;
+                TeacherMaButton.Visible = true;
+            }
+            else if (!isTest && !TeacherConfirm)
+            {
+                Reminder(i);
+                if (!isTest) return;
+                RemoveButton();
+                ClearQuestion();
+                addQuestion(i);
+                this.timer1.Start();
+            }
+            if (TeacherConfirm)
+            {
+                Reminder(i);
+                RemoveButton();
+                ClearQuestion();
+                addQuestion(i);
+                TeacherConfirm = false;
+            }
+        }
+
+        private void PracticeButton_Click(object sender, EventArgs e)
+        {
+            if (isTest)
+            {
+                MessageBox.Show("     请先完成考试!     ");
+                return;
+            }
+            RemoveButton();
+            ClearQuestion();
+            ButtonPractice.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(236)))), ((int)(((byte)(236)))));
+            RecoveryButtonBackColor(1);
+            addQuestion(6);
+        }
+
+        private void ButtonLevel70_Click(object sender, EventArgs e)
+        {
+            ButtonLevel70.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(236)))), ((int)(((byte)(236)))));
+            RecoveryButtonBackColor(6);
+            ConfirmTest(1);
+        }
 
         private void ButtonLevel80_Click(object sender, EventArgs e)
         {
-            RemoveButton();
             ButtonLevel80.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(236)))), ((int)(((byte)(236)))));
             RecoveryButtonBackColor(2);
-            addQuestion(2);
+            ConfirmTest(2);
         }
 
         private void ButtonLevel95_Click(object sender, EventArgs e)
         {
-            RemoveButton();
             ButtonLevel95.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(236)))), ((int)(((byte)(236)))));
             RecoveryButtonBackColor(3);
-            addQuestion(3);
+            ConfirmTest(3);
         }
 
         private void ButtonLevel100_Click(object sender, EventArgs e)
         {
-            RemoveButton();
             ButtonLevel100.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(236)))), ((int)(((byte)(236)))));
             RecoveryButtonBackColor(4);
-            addQuestion(4);
+            ConfirmTest(4);
         }
 
         private void ButtonMyAnswer_Click(object sender, EventArgs e)
         {
+            if (isTest)
+            {
+                MessageBox.Show("     请先完成考试!     ");
+                return;
+            }
             RemoveButton();
             ButtonMyAnswer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(236)))), ((int)(((byte)(236)))));
             RecoveryButtonBackColor(5);
@@ -164,7 +351,7 @@ namespace HomeWorkofPrincipleofMicrocomputerManager
         }
 
         //连接数据库取得题目
-        void addQuestion(int i)
+        public void addQuestion(int i)
         {
             qustionSelectLable.Visible = false;
             MySqlCommand cmd;
@@ -175,19 +362,21 @@ namespace HomeWorkofPrincipleofMicrocomputerManager
             int questionID2 = 0;
             int answerID = 0;
             int correcting = 0;
-            if (i == 1) sql = "select * from questiontable order by questionID desc";
+            int zongtishu = 0;
+            if (i == 6) sql = "select * from questiontable order by questionID desc";
             else if (i == 2) sql = "select * from questiontable where difficulty='80' order by questionID desc";
-            else if (i == 3) sql = "select * from questiontable where difficulty='95' order by questionID desc";
+            else if (i == 3) sql = "select * from questiontable where difficulty='90' order by questionID desc";
             else if (i == 4) sql = "select * from questiontable where difficulty='100' order by questionID desc";
+            else if (i == 1) sql = "select * from questiontable where difficulty='70' order by questionID desc";
             else if (i == 5) sql = "select * from answertable where userid='" + LoginForm.userid + "' order by answerID desc";
             try
             {
                 cmd = new MySqlCommand(sql, conn);
                 conn.Open();
                 reader = cmd.ExecuteReader();
-                while(reader.Read())
+                if (i == 5)
                 {
-                    if (i == 5)
+                    while(reader.Read())
                     {
                         answerID = reader.GetInt32(0);
                         questionID2 = reader.GetInt32(3);
@@ -196,7 +385,10 @@ namespace HomeWorkofPrincipleofMicrocomputerManager
                         addQuestionButton(LocationFlag, buttonName, questionID2, answerID , correcting);
                         LocationFlag++;
                     }
-                    else
+                }
+                else if (i == 6)
+                {
+                    while (reader.Read())
                     {
                         questionID2 = reader.GetInt32(0);
                         buttonName = reader.GetString(1);
@@ -204,16 +396,65 @@ namespace HomeWorkofPrincipleofMicrocomputerManager
                         LocationFlag++;
                     }
                 }
+                else
+                {
+                    //取得考试需要的题目数量
+                    int neednumber = 0;
+                    if (i == 1) neednumber = number70;
+                    else if (i == 2) neednumber = number80;
+                    else if (i == 3) neednumber = number90;
+                    else if (i == 4) neednumber = number100;
+
+                    while (reader.Read())
+                    {
+                        zongtishu++;
+                    }
+                    reader.Close();
+                    reader = cmd.ExecuteReader();
+                    int[] queding = new int[zongtishu];
+                    int k = 0;
+                    for (int j = 1; j <= neednumber; j++)
+                    {
+                        Random rd = new Random();
+                        k = rd.Next(1, 1000) % zongtishu;
+                        //TimeStatus.Text = k.ToString();
+                        if (queding[k] != 1)
+                        {
+                            queding[k] = 1;
+                        }
+                        else --j;
+                    }
+                    int h = 0;
+                    while (reader.Read())
+                    {
+                        if (queding[h] == 1)
+                        {
+                            questionID2 = reader.GetInt32(0);
+                            buttonName = reader.GetString(1);
+                            addQuestionButton(LocationFlag, buttonName, questionID2, 0, 0);
+                            LocationFlag++;
+                        }
+                        h++;
+                    }
+                }
+
                 //有题目显示出来，判断数量，决定要不要改变SplitterDistance
                 if (LocationFlag != 1)
                 {
                     if (this.Width == 1000 && LocationFlag > 8)
                     {
-                        splitContainer2.SplitterDistance += 15;
+                        if (splitContainer2.SplitterDistance < 260) 
+                            splitContainer2.SplitterDistance += 15;
                     }
                     else if (this.Width > 1000 && LocationFlag > 12)
                     {
-                        splitContainer2.SplitterDistance += 15;
+                        if (splitContainer2.SplitterDistance < 260) 
+                            splitContainer2.SplitterDistance += 15;
+                    }
+                    if (LocationFlag < 8)
+                    {
+                        if (splitContainer2.SplitterDistance > 260)
+                            splitContainer2.SplitterDistance -= 15;
                     }
                 }
             }
@@ -237,7 +478,7 @@ namespace HomeWorkofPrincipleofMicrocomputerManager
             buttonX.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(242)))), ((int)(((byte)(253)))));
             buttonX.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(248)))), ((int)(((byte)(254)))));
             buttonX.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            buttonX.Size = new System.Drawing.Size(splitContainer2.SplitterDistance - 10, 60);
+            buttonX.Size = new System.Drawing.Size(240, 60);
             buttonX.Location = new System.Drawing.Point(5, 65 * (i - 1) + 5);
 
             if (aID == 0)
@@ -365,6 +606,19 @@ namespace HomeWorkofPrincipleofMicrocomputerManager
         //题目按钮单击事件
         private void questionButton_Click(object sender, EventArgs e)
         {
+            if (isTest)
+            {
+                LeftTime.Visible = true;
+                LeftTimeLabel.Visible = true;
+                AddTime.Visible = true;
+                LeftTime.Text = AboutTime.ToString() + " 分钟";
+            }
+            else 
+            {
+                LeftTime.Visible = false;
+                LeftTimeLabel.Visible = false;
+                AddTime.Visible = false;
+            }
             questionShowRichTextBox.Text = "";//清空问题box
             answerQuestionRichTextBox.Text = "";//清空回答box
             buttonSubmit.Text = "提交";
@@ -433,6 +687,7 @@ namespace HomeWorkofPrincipleofMicrocomputerManager
                 else if (ButtonBackColor == 3) ButtonLevel95.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
                 else if (ButtonBackColor == 4) ButtonLevel100.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
                 else if (ButtonBackColor == 5) ButtonMyAnswer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
+                else if (ButtonBackColor == 6) ButtonLevel70.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
                 ButtonBackColor = i;
             }
         }
@@ -460,6 +715,16 @@ namespace HomeWorkofPrincipleofMicrocomputerManager
         private void ButtonPractice_MouseLeave(object sender, EventArgs e)
         {
             ButtonPractice.FlatAppearance.BorderColor = Color.FromArgb(250, 250, 250);
+        }
+
+        private void ButtonLevel70_MouseEnter(object sender, EventArgs e)
+        {
+            ButtonLevel70.FlatAppearance.BorderColor = Color.FromArgb(195, 229, 245);
+        }
+
+        private void ButtonLevel70_MouseLeave(object sender, EventArgs e)
+        {
+            ButtonLevel70.FlatAppearance.BorderColor = Color.FromArgb(250, 250, 250);
         }
 
         private void ButtonLevel80_MouseEnter(object sender, EventArgs e)
@@ -501,9 +766,18 @@ namespace HomeWorkofPrincipleofMicrocomputerManager
         {
             ButtonMyAnswer.FlatAppearance.BorderColor = Color.FromArgb(250, 250, 250);
         }
-        //问题提交
-        private void buttonSubmit_Click(object sender, EventArgs e)
+        private void SubmitTest()
         {
+            string TestTitle = null;
+            if (isTest)
+            {
+                buttonSubmit.Enabled = false;
+                buttonSubmit.Text = "禁用";
+                TestTitle = "考试 " + questionShowTitleLable.Text;
+                isTest = false;
+                isTestEquelToFalse();
+            }
+            else TestTitle = questionShowTitleLable.Text;
             MySqlCommand cmd;
             try
             {
@@ -516,11 +790,11 @@ namespace HomeWorkofPrincipleofMicrocomputerManager
                 //将内存流储存为byte
                 byte[] blob = new byte[ms.Length];
                 ms.Read(blob, 0, blob.Length);
-                TimeStatus.Text = ms.Length.ToString();
+                //TimeStatus.Text = ms.Length.ToString();
                 //保存二进制流都是使用的参数，没有谁在代码中直接给出的。
                 string time = DateTime.Now.ToString();
                 //string sql = "insert into questiontable(title,questype,difficulty,content,answer) values('"+title+"','问答题','90',?data,'NULL')";
-                string sql = "insert into answertable(userid,time,questionid,title,answer,score,correcting,comments,zan) values('"+LoginForm.userid+"','"+time+"','"+questionID+"','"+questionShowTitleLable.Text+"',?data,0,0,'',0)";
+                string sql = "insert into answertable(userid,time,questionid,title,answer,score,correcting,comments,zan) values('" + LoginForm.userid + "','" + time + "','" + questionID + "','" + TestTitle + "',?data,0,0,'',0)";
                 cmd = new MySqlCommand(sql, conn);
                 cmd.Parameters.Add("?data", MySql.Data.MySqlClient.MySqlDbType.LongBlob, blob.Length).Value = blob;
 
@@ -530,11 +804,17 @@ namespace HomeWorkofPrincipleofMicrocomputerManager
                 ms.Close();
 
                 MessageBox.Show("     回答提交成功!     ");//弹出对话框显示提交成功
+                isTest = false;//考试结束
             }
             catch (MySqlException ex)
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+        //问题提交
+        private void buttonSubmit_Click(object sender, EventArgs e)
+        {
+            SubmitTest();
         }
 
         //添加图片按钮
@@ -646,6 +926,11 @@ namespace HomeWorkofPrincipleofMicrocomputerManager
 
         private void ButtonPaper_Click(object sender, EventArgs e)
         {
+            if (isTest)
+            {
+                MessageBox.Show("     请先完成考试!     ");
+                return;
+            }
             RemoveButton();
             int LocationFlag = 1;
             int qID = 0;
@@ -671,6 +956,41 @@ namespace HomeWorkofPrincipleofMicrocomputerManager
                 {
                     splitContainer2.SplitterDistance += 15;
                 }
+            }
+        }
+
+        private void TeacherMaButton_Click(object sender, EventArgs e)
+        {
+            if (TeacherMaBox.Text == TeacherMa)
+            {
+                MessageBox.Show("     确认成功，点击抽题按钮可以重抽一次或者添加时间     ");
+                TeacherConfirm = true;
+                TeacherMaBox.Visible = false;
+                TeacherMaLabel.Visible = false;
+                TeacherMaButton.Visible = false;
+            }
+            else
+            {
+                MessageBox.Show("     验证码错误，请重试!     ");
+            }
+            TeacherMaBox.Text = "";
+        }
+
+        private void AddTime_Click(object sender, EventArgs e)
+        {
+            if (!TeacherConfirm)
+            {
+                MessageBox.Show("     想要添加时间请联系教师!     ");
+                TeacherMaLabel.Visible = true;
+                TeacherMaBox.Visible = true;
+                TeacherMaButton.Visible = true;
+            }
+            else
+            {
+                AboutTime += 10;
+                LeftTime.Text = AboutTime.ToString() + " 分钟";
+                MessageBox.Show("     成功延长10分钟!     ");
+                TeacherConfirm = false;
             }
         }
     }
